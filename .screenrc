@@ -1,0 +1,41 @@
+#############################################################################
+# .screenrc
+#############################################################################
+
+# Don't show startup message on launch
+startup_message off
+
+# Refresh more than just the current cursor on window change
+# https://www.gnu.org/software/screen/manual/screen.html#index-allpartial-122
+allpartial off
+
+# Set default scrollback length
+defscrollback 10000
+
+# Setup our info bar at the bottom of the screen
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{Wb} %-w%{Wk}[%n %t]%{-}%+w %=%{W}@%H "
+# Format explained
+# %{Wb}   = Set background color to blue and text to bright white
+# %-w     = List windows before the currently focused window
+# %{Wk}   = Set fg color to bright white and the bg color to black
+# [%n %t] = List the current window's number and then title
+# %{-}    = Unset the currently active color scheme
+# %+w     = List the windows after the currently focused window
+# %=      = Fill right until more text is encountered 
+# %{W}    = Set fg color to bright white
+# @       = Just a text at symbol
+# %H      = Hostname of system the screen session was started on
+
+# Disable visual bell
+vbell off
+
+# Defines the time, in seconds, a message is displayed if screen is not disturbed
+# by other activity. The default is 5 seconds.
+msgwait 1
+
+# Amongst other features, clear the screen after exiting vim. From the docs:
+# "If set to on, "alternate screen" support is enabled in virtual 
+# terminals, just like in xterm. Initial setting is ‘off’".
+altscreen on

@@ -1,0 +1,9 @@
+*~
+.DS_Store
+
+# Python bytecode
+*.pyc
+
+# Virtual envs
+env/
+.venv/

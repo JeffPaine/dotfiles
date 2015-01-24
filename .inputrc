@@ -1,0 +1,8 @@
+# Show tab-completion options on first press of tab key
+set show-all-if-ambiguous on
+
+# Ignore case when performing tab completion
+set completion-ignore-case on
+
+# Ignore _ vs. - in tab completion
+set completion-map-case on
