@@ -7,3 +7,6 @@
 # Virtual envs
 env/
 .venv/
+
+# vi .swp files
+*.swp
