@@ -37,6 +37,9 @@ Plugin 'godlygeek/tabular'
 " Easily add, subtract quotes / parentheses, etc
 Plugin 'tpope/vim-surround'
 
+" A nice colorscheme
+Plugin 'tomasr/molokai'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
