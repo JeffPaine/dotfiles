@@ -1,13 +1,12 @@
-#############################################################################
-# .screenrc
-#############################################################################
+# Make screen act like tmux, so my fingers can remain dumb
+escape ^Bb 
 
 # Don't show startup message on launch
-startup_message off
+startup_message off 
 
 # Refresh more than just the current cursor on window change
 # https://www.gnu.org/software/screen/manual/screen.html#index-allpartial-122
-allpartial off
+allpartial off 
 
 # Set default scrollback length
 defscrollback 10000
@@ -29,7 +28,7 @@ hardstatus string "%{Wb} %-w%{Wk}[%n %t]%{-}%+w %=%{W}@%H "
 # %H      = Hostname of system the screen session was started on
 
 # Disable visual bell
-vbell off
+vbell off 
 
 # Defines the time, in seconds, a message is displayed if screen is not disturbed
 # by other activity. The default is 5 seconds.
