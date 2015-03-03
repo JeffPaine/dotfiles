@@ -7,12 +7,6 @@ if [[ -d "$HOME/bin" ]]; then
 	export PATH=$PATH:$HOME/bin
 fi
 
-# Add the golang install location to our $PATH
-# http://golang.org/doc/install#osx
-if [[ -d "/usr/local/go/bin" ]]; then
-	export PATH=$PATH:/usr/local/go/bin
-fi
-
 # Set our $GOPATH
 # http://golang.org/doc/code.html#GOPATH
 export GOPATH=$HOME
