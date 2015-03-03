@@ -71,6 +71,16 @@ set backspace=2
 " Show line numbers
 set number
 
+" Set no line length by default
+set textwidth=0
+
+" Wrap text by default
+set wrap
+
+" Don't break text in the middle of a word, roughly.
+" More specifically, only break at a character in breakat.
+set linebreak
+
 " Ignore case when performing searches
 set ignorecase
 
@@ -119,6 +129,9 @@ if v:version > 703 || v:version == 703 && has("patch541")
   set formatoptions+=j
 endif
 
+" Only one space after a period when reflowing text.
+set nojoinspaces
+
 " ###########################################################################
 " Keybindings
 " ###########################################################################
@@ -134,8 +147,12 @@ map <C-w>- <C-w>s
 " Python file only settings
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
 
-" golang file only settings
-autocmd Filetype go setlocal  tabstop=4
+" Markdown
+" Assume markdown syntax for all .md files (not modula-2)
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+" BufNewFile = When starting to edit a file that doesn't exist.
+" BufRead = When starting to edit a new buffer, after reading the file into the
+" buffer, before executing the modelines.
 
 " ###########################################################################
 " Plugin Specific
