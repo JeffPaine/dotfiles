@@ -116,6 +116,24 @@ if v:version > 703 || v:version == 703 && has("patch541")
   set formatoptions+=j
 endif
 
+" Create .swp files in single, non-intrusive place.
+" The // tells vim to store .swp files in a way that files with the same
+" name won't conflict.
+if !isdirectory($HOME."/.vim/backup")
+    call mkdir($HOME."/.vim/backup", "p")
+endif
+set backupdir=$HOME/.vim/backup//
+
+if !isdirectory($HOME."/.vim/swap")
+    call mkdir($HOME."/.vim/swap", "p")
+endif
+set directory=$HOME/.vim/swap//
+
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo", "p")
+endif
+set undodir=$HOME./.vim/undo//
+
 " ###########################################################################
 " Keybindings
 " ###########################################################################
@@ -130,9 +148,6 @@ map <C-w>- <C-w>s
 
 " Python file only settings
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
-
-" golang file only settings
-autocmd Filetype go setlocal  tabstop=4
 
 " ###########################################################################
 " Plugin Specific
