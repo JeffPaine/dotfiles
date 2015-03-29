@@ -37,6 +37,9 @@ Plugin 'godlygeek/tabular'
 " Easily add, subtract quotes / parentheses, etc
 Plugin 'tpope/vim-surround'
 
+" A nice colorscheme
+Plugin 'tomasr/molokai'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -67,6 +70,16 @@ set backspace=2
 
 " Show line numbers
 set number
+
+" Set no line length by default
+set textwidth=0
+
+" Wrap text by default
+set wrap
+
+" Don't break text in the middle of a word, roughly.
+" More specifically, only break at a character in breakat.
+set linebreak
 
 " Ignore case when performing searches
 set ignorecase
@@ -148,6 +161,13 @@ map <C-w>- <C-w>s
 
 " Python file only settings
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
+
+" Markdown
+" Assume markdown syntax for all .md files (not modula-2)
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+" BufNewFile = When starting to edit a file that doesn't exist.
+" BufRead = When starting to edit a new buffer, after reading the file into the
+" buffer, before executing the modelines.
 
 " ###########################################################################
 " Plugin Specific
