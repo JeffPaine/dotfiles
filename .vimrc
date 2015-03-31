@@ -36,6 +36,9 @@ Plugin 'Raimondi/delimitMate'
 " Easy tabularizing / aligning.
 Plugin 'godlygeek/tabular'
 
+" Easily add, subtract quotes / parentheses, etc
+Plugin 'tpope/vim-surround'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -135,6 +138,24 @@ endif
 
 " Only one space after a period when reflowing text.
 set nojoinspaces
+
+" Create .swp files in a single, non-intrusive place.
+" The // tells vim to store .swp files in a way that files with the same
+" name won't conflict.
+if !isdirectory($HOME."/.vim/backup")
+    call mkdir($HOME."/.vim/backup", "p")
+endif
+set backupdir=$HOME/.vim/backup//
+
+if !isdirectory($HOME."/.vim/swap")
+    call mkdir($HOME."/.vim/swap", "p")
+endif
+set directory=$HOME/.vim/swap//
+
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo", "p")
+endif
+set undodir=$HOME./.vim/undo//
 
 " ###########################################################################
 " Keybindings
