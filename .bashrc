@@ -79,3 +79,15 @@ function prompt {
 
 # Run the prompt function above which exports our PS1
 prompt
+
+#################################################################################
+# Miscellaneous
+#################################################################################
+
+# sky only
+if [[ $(hostname) = "sky" ]]; then
+	# Enable bash-completion, per `brew install bash-completion`
+	if [ -f $(brew --prefix)/etc/bash_completion ]; then
+	  . $(brew --prefix)/etc/bash_completion
+	fi
+fi
