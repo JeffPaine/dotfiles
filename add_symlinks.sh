@@ -1,6 +1,7 @@
 #!/bin/bash
 
 dot_files='.bash_profile
+.bashrc
 .gitconfig
 .gitignore_global
 .inputrc
