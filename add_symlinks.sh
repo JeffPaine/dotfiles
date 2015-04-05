@@ -4,6 +4,7 @@ dot_files='.bash_profile
 .bashrc
 .gitconfig
 .gitignore_global
+.i3status.conf
 .inputrc
 .psqlrc
 .screenrc
