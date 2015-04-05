@@ -4,6 +4,7 @@ dot_files='.bash_profile
 .bashrc
 .gitconfig
 .gitignore_global
+.i3/config
 .i3status.conf
 .inputrc
 .psqlrc
@@ -12,8 +13,13 @@ dot_files='.bash_profile
 .vimrc'
 
 for file in ${dot_files}; do
-  if [[ -e "${HOME}/${file}" ]]; then
+  # Check that our file exists and that it is not a symbolic link.
+  if [[ -e "${HOME}/${file}" ]] && ! [[ -L "${HOME}/${file}" ]]; then
+    echo "Deleting ${file} to replace with symlink"
     rm -i "${HOME}/${file}"
   fi
-  ln -s "${HOME}/.dotfiles/${file}" "${HOME}/${file}"
+  if ! [[ -L "${HOME}/${file}" ]]; then
+    echo "Symlinking ${HOME}/.dotfiles/${file} to ${HOME}/${file}"
+    ln -s "${HOME}/.dotfiles/${file}" "${HOME}/${file}"
+  fi
 done
