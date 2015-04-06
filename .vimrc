@@ -16,13 +16,9 @@ filetype off
 " set the runtime path to include Vundle and initialize
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
-" Keep Plugin commands between vundle#begin/end.
 
 " Go-specific helpers.
 Plugin 'fatih/vim-go'
@@ -39,19 +35,15 @@ Plugin 'godlygeek/tabular'
 " Easily add, subtract quotes / parentheses, etc
 Plugin 'tpope/vim-surround'
 
+" Some work-only settings.
+if filereadable(expand('~/.at_work.vim'))
+  source ~/.at_work.vim
+else
+  Plugin 'Valloric/YouCompleteMe'
+endif
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
 " ###########################################################################
@@ -111,8 +103,10 @@ set nohidden
 " Highlight the matching parenthesis
 highlight MatchParen ctermbg=4
 
-" Add a custom status line
+" Every window always has a status line.
 set laststatus=2
+
+" Add a custom status line.
 set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 
 " Number of lines to show above or below the cursor while scrolling.
@@ -157,6 +151,9 @@ if !isdirectory($HOME."/.vim/undo")
 endif
 set undodir=$HOME./.vim/undo//
 
+" Visually highight the current line.
+set cursorline
+
 " ###########################################################################
 " Keybindings
 " ###########################################################################
@@ -179,6 +176,9 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+" The escape key is too far away
+imap jk <Esc>
+
 " ###########################################################################
 " Filetype specific
 " ###########################################################################
@@ -198,3 +198,13 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 let g:go_fmt_autosave = 1
 " Use goimports as our auto-save fmt-er.
 let g:go_fmt_command = "goimports"
+
+" ###########################################################################
+" Miscellaneous
+" ###########################################################################
+
+" 'This will enable all the plugins. This line needs to happen after all of the
+" plugin files have been added to your runtimepath. If it happens too early,
+" certain plugin files may be ignored. It's easiest to just put it at the end of
+" your vimrc and forget about it.'
+filetype plugin indent on
