@@ -40,6 +40,7 @@ if filereadable(expand('~/.at_work.vim'))
   source ~/.at_work.vim
 else
   Plugin 'Valloric/YouCompleteMe'
+  Plugin 'nvie/vim-flake8'
 endif
 
 " All of your Plugins must be added before the following line
