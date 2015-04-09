@@ -178,7 +178,7 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 
 " The escape key is too far away
-imap jk <Esc>
+imap jj <Esc>
 
 " ###########################################################################
 " Filetype specific
