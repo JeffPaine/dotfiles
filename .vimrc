@@ -152,9 +152,6 @@ if !isdirectory($HOME."/.vim/undo")
 endif
 set undodir=$HOME./.vim/undo//
 
-" Visually highight the current line.
-set cursorline
-
 " ###########################################################################
 " Keybindings
 " ###########################################################################
