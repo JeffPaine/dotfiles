@@ -29,18 +29,26 @@ Plugin 'scrooloose/syntastic'
 " Bracket (etc.) matching / closing.
 Plugin 'Raimondi/delimitMate'
 
-" Easy tabularizing / aligning.
-Plugin 'godlygeek/tabular'
-
 " Easily add, subtract quotes / parentheses, etc
 Plugin 'tpope/vim-surround'
+
+" Enable repeating (e.g. using ".") in supported plugins.
+Plugin 'tpope/vim-repeat'
+
+" A nice statusline
+Plugin 'bling/vim-airline'
+
+" Auto-enter paste mode when pasting.
+Plugin 'ConradIrwin/vim-bracketed-paste'
+
+" Align text based on delimeters
+Plugin 'godlygeek/tabular'
 
 " Some work-only settings.
 if filereadable(expand('~/.at_work.vim'))
   source ~/.at_work.vim
 else
   Plugin 'Valloric/YouCompleteMe'
-  Plugin 'nvie/vim-flake8'
 endif
 
 " All of your Plugins must be added before the following line
@@ -64,8 +72,11 @@ set autoindent
 set wildmenu
 set wildmode=list:longest,full
 
-" Enable mouse support in the console
-set mouse=a
+" Ignore case when completing file names
+set wildignorecase
+
+" Set our level of mouse support in the console
+set mouse=
 
 " Make backspace act like it does in other apps e.g. delete across line breaks,
 " etc.
@@ -101,17 +112,11 @@ set hlsearch
 " When closing tabs, get rid of the buffer, too
 set nohidden
 
-" Highlight the matching parenthesis
-highlight MatchParen ctermbg=4
-
 " Every window always has a status line.
 set laststatus=2
 
-" Add a custom status line.
-set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
-
-" Number of lines to show above or below the cursor while scrolling.
-set scrolloff=2
+" " Add a custom status line.
+" set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 
 " Set the default encoding to utf-8.
 set encoding=utf-8
@@ -152,6 +157,13 @@ if !isdirectory($HOME."/.vim/undo")
 endif
 set undodir=$HOME./.vim/undo//
 
+" Use 256 colors.
+set t_Co=256
+
+" Don't highlight matching parenthesis, braces, etc. (makes it hard to tell
+" where the cursor is.
+let g:loaded_matchparen=1
+
 " ###########################################################################
 " Keybindings
 " ###########################################################################
@@ -166,14 +178,6 @@ map <C-w>- <C-w>s
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
-" Have search results appear in the middle of the screen.
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
-
 " The escape key is too far away
 imap jj <Esc>
 
@@ -183,7 +187,7 @@ imap jj <Esc>
 
 " Markdown
 " Assume markdown syntax for all .md files (not modula-2)
-autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown|set textwidth=0
 " BufNewFile = When starting to edit a file that doesn't exist.
 " BufRead = When starting to edit a new buffer, after reading the file into the buffer, before executing the modelines.
 
@@ -197,6 +201,10 @@ let g:go_fmt_autosave = 1
 " Use goimports as our auto-save fmt-er.
 let g:go_fmt_command = "goimports"
 
+" YouCompleteMe
+" Auto-close function signature pane after insertion.
+let g:ycm_autoclose_preview_window_after_insertion=1
+
 " ###########################################################################
 " Miscellaneous
 " ###########################################################################
@@ -206,3 +214,4 @@ let g:go_fmt_command = "goimports"
 " certain plugin files may be ignored. It's easiest to just put it at the end of
 " your vimrc and forget about it.'
 filetype plugin indent on
+
