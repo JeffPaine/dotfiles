@@ -1,3 +1,6 @@
+# Source the default inputrc file
+$include /etc/inputrc
+
 # Show tab-completion options on first press of tab key
 set show-all-if-ambiguous on
 
@@ -6,3 +9,8 @@ set completion-ignore-case on
 
 # Ignore _ vs. - in tab completion
 set completion-map-case on
+
+# Display matching portions of filenames as ...
+# e.g. $a_file<TAB>
+# ...1.txt ...2.txt ...3.txt
+set completion-prefix-display-length 2
