@@ -50,6 +50,9 @@ syntax enable
 " This shows what you are typing in the status line.
 set showcmd
 
+" Don't show current mode. Let our status line do it.
+set noshowmode
+
 " Enable autoindent
 set autoindent
 
@@ -124,29 +127,17 @@ endif
 " Only one space after a period when reflowing text.
 set nojoinspaces
 
-" Create .swp files in a single, non-intrusive place.
-" The // tells vim to store .swp files in a way that files with the same
-" name won't conflict.
-if !isdirectory($HOME."/.vim/backup")
-    call mkdir($HOME."/.vim/backup", "p")
-endif
-set backupdir=$HOME/.vim/backup//
+" No infernal beeping.
+set noerrorbells
 
-if !isdirectory($HOME."/.vim/swap")
-    call mkdir($HOME."/.vim/swap", "p")
-endif
-set directory=$HOME/.vim/swap//
-
-if !isdirectory($HOME."/.vim/undo")
-    call mkdir($HOME."/.vim/undo", "p")
-endif
-set undodir=$HOME./.vim/undo//
+" No swap files.
+set noswapfile
 
 " Use 256 colors.
 set t_Co=256
 
 " Don't highlight matching parenthesis, braces, etc. (makes it hard to tell
-" where the cursor is.
+" where the cursor is).
 let g:loaded_matchparen=1
 
 " ###########################################################################
@@ -165,6 +156,29 @@ nnoremap Y y$
 
 " The escape key is too far away
 imap jj <Esc>
+
+" Easy navigation on wrapped lines.
+nnoremap j gj
+nnoremap k gk
+
+" Custom leader for custom commands.
+let mapleader = ","
+let g:mapleader = ","
+
+" Quick save.
+nnoremap <leader>w :w<CR>
+
+" Quick quit.
+nnoremap <leader>q :q<CR>
+
+" Quick hide search highlighting.
+nnoremap <leader>n :nohlsearch<CR>
+
+" Quick select all text.
+nnoremap <leader>a ggVG<CR>
+
+" Copy to system copy-paste buffer.
+vnoremap <leader>c "+y<CR>
 
 " ###########################################################################
 " Filetype specific
@@ -189,6 +203,10 @@ let g:go_fmt_command = "goimports"
 " YouCompleteMe
 " Auto-close function signature pane after insertion.
 let g:ycm_autoclose_preview_window_after_insertion=1
+
+" NERDTree.
+" Quick show NERDTree.
+nnoremap <leader>nt :NERDTree<CR>
 
 " ###########################################################################
 " Miscellaneous
