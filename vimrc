@@ -17,32 +17,17 @@ filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Go-specific helpers.
-Plugin 'fatih/vim-go'
-
-" Syntax checking.
-Plugin 'scrooloose/syntastic'
-
-" Bracket (etc.) matching / closing.
-Plugin 'Raimondi/delimitMate'
-
-" Easily add, subtract quotes / parentheses, etc
-Plugin 'tpope/vim-surround'
-
-" Enable repeating (e.g. using ".") in supported plugins.
-Plugin 'tpope/vim-repeat'
-
-" A nice statusline
-Plugin 'bling/vim-airline'
-
-" Auto-enter paste mode when pasting.
-Plugin 'ConradIrwin/vim-bracketed-paste'
-
-" Align text based on delimeters
-Plugin 'godlygeek/tabular'
+Plugin 'gmarik/Vundle.vim'               " let Vundle manage Vundle, required
+Plugin 'fatih/vim-go'                    " Go-specific helpers.
+Plugin 'scrooloose/syntastic'            " Syntax checking.
+Plugin 'Raimondi/delimitMate'            " Bracket (etc.) matching / closing.
+Plugin 'tpope/vim-surround'              " Easily add, subtract quotes / parentheses, etc
+Plugin 'tpope/vim-repeat'                " Enable repeating (e.g. using '.') in supported plugins.
+Plugin 'bling/vim-airline'               " A nice statusline
+Plugin 'ConradIrwin/vim-bracketed-paste' " Auto-enter paste mode when pasting.
+Plugin 'godlygeek/tabular'               " Align text based on delimeters
+Plugin 'tpope/vim-commentary'            " Easy [un]commenting of lines.
+Plugin 'scrooloose/nerdtree'             " File explorer.
 
 " Some work-only settings.
 if filereadable(expand('~/.at_work.vim'))
@@ -52,7 +37,7 @@ else
 endif
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call vundle#end()
 " Put your non-Plugin stuff after this line
 
 " ###########################################################################
