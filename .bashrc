@@ -17,6 +17,9 @@ fi
 # http://golang.org/doc/code.html#GOPATH
 export GOPATH=$HOME
 
+# Add the Heroku Toolbelt.
+export PATH="/usr/local/heroku/bin:$PATH"
+
 #################################################################################
 # Environment variables
 #################################################################################
@@ -91,3 +94,5 @@ if [[ $(hostname) = "sky" ]]; then
 	  . $(brew --prefix)/etc/bash_completion
 	fi
 fi
+
+alias ls='ls --color=auto'
