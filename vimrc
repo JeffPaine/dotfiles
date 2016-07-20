@@ -50,8 +50,8 @@ syntax enable
 " This shows what you are typing in the status line.
 set showcmd
 
-" Don't show current mode. Let our status line do it.
-set noshowmode
+" Show the current mode.
+set showmode
 
 " Enable autoindent
 set autoindent
@@ -69,6 +69,9 @@ set mouse=
 " Make backspace act like it does in other apps e.g. delete across line breaks,
 " etc.
 set backspace=2
+
+" Make arrow and movement keys work across lines.
+set whichwrap+=<,>,[,],h,l
 
 " Show line numbers
 set number
@@ -138,7 +141,7 @@ set t_Co=256
 
 " Don't highlight matching parenthesis, braces, etc. (makes it hard to tell
 " where the cursor is).
-let g:loaded_matchparen=1
+" let g:loaded_matchparen=1
 
 " ###########################################################################
 " Keybindings
@@ -161,6 +164,10 @@ imap jj <Esc>
 nnoremap j gj
 nnoremap k gk
 
+" Re-highlight lines after shifting them.
+vnoremap < <gv
+vnoremap > >gv
+
 " Custom leader for custom commands.
 let mapleader = ","
 let g:mapleader = ","
@@ -179,6 +186,26 @@ nnoremap <leader>a ggVG<CR>
 
 " Copy to system copy-paste buffer.
 vnoremap <leader>c "+y<CR>
+
+" Hide highlighted text.
+nnoremap <leader>nn :nohlsearch<CR>
+
+" Reload .vimrc.
+nnoremap <leader>r :source $MYVIMRC<CR>
+
+" Quickly enter/exit paste mode.
+nnoremap <leader>p :set paste<CR>
+nnoremap <leader>np :set nopaste<CR>
+
+" Change tabs conveniently.
+noremap <c-n> gt
+noremap <c-p> gT
+
+" Move to start / end of lines more conveniently.
+nnoremap <C-a> ^
+vnoremap <C-a> ^
+nnoremap <C-e> $
+vnoremap <C-e> $
 
 " ###########################################################################
 " Filetype specific
@@ -208,6 +235,15 @@ let g:ycm_autoclose_preview_window_after_insertion=1
 " Quick show NERDTree.
 nnoremap <leader>nt :NERDTree<CR>
 
+" Open a file in a new tab, and change to that tab.
+nmap <leader>t Tqgt
+
+" Syntastic
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": ["python"] }
+
 " ###########################################################################
 " Miscellaneous
 " ###########################################################################
@@ -217,4 +253,3 @@ nnoremap <leader>nt :NERDTree<CR>
 " certain plugin files may be ignored. It's easiest to just put it at the end of
 " your vimrc and forget about it.'
 filetype plugin indent on
-
