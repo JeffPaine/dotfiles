@@ -30,8 +30,8 @@ Plugin 'tpope/vim-commentary'            " Easy [un]commenting of lines.
 Plugin 'scrooloose/nerdtree'             " File explorer.
 
 " Some work-only settings.
-if filereadable(expand('~/.at_work.vim'))
-  source ~/.at_work.vim
+if filereadable(expand('~/.vimrc.at_work'))
+  source ~/.vimrc.at_work
 else
   Plugin 'Valloric/YouCompleteMe'
 endif
