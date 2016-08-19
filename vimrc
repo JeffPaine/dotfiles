@@ -198,8 +198,11 @@ nnoremap <leader>p :set paste<CR>
 nnoremap <leader>np :set nopaste<CR>
 
 " Change tabs conveniently.
-noremap <c-n> gt
-noremap <c-p> gT
+noremap <C-n> gt
+noremap <C-p> gT
+
+" Open a new tab.
+noremap <C-t> :tabnew<CR>
 
 " Move to start / end of lines more conveniently.
 nnoremap <C-a> ^
@@ -243,6 +246,16 @@ let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "active_filetypes": [],
     \ "passive_filetypes": ["python"] }
+
+" Raimondi/delimitMate
+" Auto expand enclosing brackets, etc. in insert mode on <CR>. e.g.:
+"
+" foo {}
+"
+" foo {
+"
+" }
+let delimitMate_expand_cr=1
 
 " ###########################################################################
 " Miscellaneous
