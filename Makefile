@@ -9,3 +9,4 @@ all:
 	# [ -f ${HOME}/.psqlrc ] || ln -s $(PWD)/psqlrc ${HOME}/.psqlrc
 	[ -f ${HOME}/.tmux.conf ] || ln -s $(PWD)/tmux.conf ${HOME}/.tmux.conf
 	[ -f ${HOME}/.vimrc ] || ln -s $(PWD)/vimrc ${HOME}/.vimrc
+	[ -f ${HOME}/.weechat/weechat.conf ] || ln -s $(PWD)/weechat/weechat.conf ${HOME}/.weechat/weechat.conf
