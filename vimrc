@@ -30,8 +30,8 @@ Plugin 'tpope/vim-commentary'            " Easy [un]commenting of lines.
 Plugin 'scrooloose/nerdtree'             " File explorer.
 
 " Some work-only settings.
-if filereadable(expand('~/.vimrc.work'))
-  source ~/.vimrc.work
+if filereadable(expand('~/.at_work.vimrc'))
+  source ~/.at_work.vimrc
 else
   Plugin 'Valloric/YouCompleteMe'
 endif
@@ -159,6 +159,10 @@ nnoremap Y y$
 
 " The escape key is too far away
 imap jj <Esc>
+
+" Vertically center searched-for text on screen.
+nnoremap n nzz
+nnoremap N Nzz
 
 " Easy navigation on wrapped lines.
 nnoremap j gj
