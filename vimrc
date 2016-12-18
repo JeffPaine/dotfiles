@@ -28,6 +28,7 @@ Plugin 'ConradIrwin/vim-bracketed-paste' " Auto-enter paste mode when pasting.
 Plugin 'godlygeek/tabular'               " Align text based on delimeters
 Plugin 'tpope/vim-commentary'            " Easy [un]commenting of lines.
 Plugin 'scrooloose/nerdtree'             " File explorer.
+Plugin 'tomasr/molokai'                  " A nice color scheme.
 
 " Some work-only settings.
 if filereadable(expand('~/.at_work.vimrc'))
@@ -138,6 +139,9 @@ set noswapfile
 
 " Use 256 colors.
 set t_Co=256
+
+" Custom colorscheme.
+colorscheme molokai
 
 " Don't highlight matching parenthesis, braces, etc. (makes it hard to tell
 " where the cursor is).
