@@ -28,7 +28,6 @@ Plugin 'ConradIrwin/vim-bracketed-paste' " Auto-enter paste mode when pasting.
 Plugin 'godlygeek/tabular'               " Align text based on delimeters
 Plugin 'tpope/vim-commentary'            " Easy [un]commenting of lines.
 Plugin 'scrooloose/nerdtree'             " File explorer.
-Plugin 'tpope/vim-commentary'            " Easy comment / uncomment support.
 
 " Some work-only settings.
 if filereadable(expand('~/.at_work.vimrc'))
