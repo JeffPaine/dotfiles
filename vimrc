@@ -83,6 +83,9 @@ set textwidth=0
 " Wrap text by default
 set wrap
 
+" Indent wrapped text as needed.
+set breakindent
+
 " Don't break text in the middle of a word, roughly.
 " More specifically, only break at a character in breakat.
 set linebreak
@@ -145,7 +148,7 @@ colorscheme molokai
 
 " Don't highlight matching parenthesis, braces, etc. (makes it hard to tell
 " where the cursor is).
-" let g:loaded_matchparen=1
+let g:loaded_matchparen=1
 
 " ###########################################################################
 " Keybindings
