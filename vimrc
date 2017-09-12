@@ -207,6 +207,8 @@ nnoremap <leader>r :source $MYVIMRC<CR>
 " Quickly enter/exit paste mode.
 nnoremap <leader>p :set paste<CR>
 nnoremap <leader>np :set nopaste<CR>
+set pastetoggle=<F4>
+
 
 " Change tabs conveniently.
 noremap <C-n> gt
