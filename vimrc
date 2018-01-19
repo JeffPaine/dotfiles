@@ -77,6 +77,9 @@ set whichwrap+=<,>,[,],h,l
 " Show line numbers
 set number
 
+" Highlight the current line.
+set cursorline
+
 " Set no line length by default
 set textwidth=0
 
