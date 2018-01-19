@@ -14,3 +14,8 @@ set completion-map-case on
 # e.g. $a_file<TAB>
 # ...1.txt ...2.txt ...3.txt
 set completion-prefix-display-length 2
+
+# Sets readline to display possible completions using different colors to
+# indicate their file types. The colors are determined by the environmental
+# variable LS_COLORS, which can be nicely configured.
+set colored-stats on
