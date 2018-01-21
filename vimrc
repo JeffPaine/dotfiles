@@ -19,7 +19,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'               " let Vundle manage Vundle, required
 Plugin 'fatih/vim-go'                    " Go-specific helpers.
-Plugin 'scrooloose/syntastic'            " Syntax checking.
+Plugin 'vim-syntastic/syntastic'         " Syntax checking.
 Plugin 'Raimondi/delimitMate'            " Bracket (etc.) matching / closing.
 Plugin 'tpope/vim-surround'              " Easily add, subtract quotes / parentheses, etc
 Plugin 'tpope/vim-repeat'                " Enable repeating (e.g. using '.') in supported plugins.
@@ -29,6 +29,13 @@ Plugin 'godlygeek/tabular'               " Align text based on delimeters
 Plugin 'tpope/vim-commentary'            " Easy [un]commenting of lines.
 Plugin 'scrooloose/nerdtree'             " File explorer.
 Plugin 'tomasr/molokai'                  " A nice color scheme.
+Plugin 'tpope/vim-eunuch'                " https://github.com/tpope/vim-eunuch: Add things like :Move, :Rename, etc.
+" required by google/vim-codefmt.
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+" Also add Glaive, which is used to configure codefmt's maktaba flags. See
+" `:help :Glaive` for usage.
+Plugin 'google/vim-glaive'
 
 " Some work-only settings.
 if filereadable(expand('~/.at_work.vimrc'))
@@ -40,6 +47,9 @@ endif
 " All of your Plugins must be added before the following line
 call vundle#end()
 " Put your non-Plugin stuff after this line
+
+" Enable https://github.com/google/vim-glaive.
+call glaive#Install()
 
 " ###########################################################################
 " General
@@ -231,10 +241,16 @@ vnoremap <C-e> $
 " ###########################################################################
 
 " Markdown
-" Assume markdown syntax for all .md files (not modula-2)
-autocmd BufNewFile,BufRead *.md set filetype=markdown|set textwidth=0
+" Assume markdown syntax for all .md files (not modula-2).
 " BufNewFile = When starting to edit a file that doesn't exist.
 " BufRead = When starting to edit a new buffer, after reading the file into the buffer, before executing the modelines.
+autocmd BufNewFile,BufRead *.md set filetype=markdown|set textwidth=0
+
+" C++
+" tabstop: Number of spaces that a <Tab> in the file counts for.
+" shiftwidth: How many columns text is indented with the reindent operations (<< and >>).
+" expandtab: In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
+autocm Filetype cpp setlocal tabstop=2 shiftwidth=2 expandtab
 
 " ###########################################################################
 " Plugin specific
@@ -257,13 +273,24 @@ nnoremap <leader>nt :NERDTree<CR>
 " Open a file in a new tab, and change to that tab.
 nmap <leader>t Tqgt
 
-" Syntastic
+" https://github.com/vim-syntastic/syntastic
 let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "active_filetypes": [],
     \ "passive_filetypes": ["python"] }
 
-" Raimondi/delimitMate
+" As recommended by :h syntastic-recommended.
+" https://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic.txt#L116.
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" https://github.com/Raimondi/delimitMate
 " Auto expand enclosing brackets, etc. in insert mode on <CR>. e.g.:
 "
 " foo {}
@@ -273,9 +300,32 @@ let g:syntastic_mode_map = {
 " }
 let delimitMate_expand_cr=1
 
+" https://github.com/google/vim-codefmt
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType html,css,json AutoFormatBuffer js-beautify
+  autocmd FileType python AutoFormatBuffer yapf
+  " autocmd FileType dart AutoFormatBuffer dartfmt
+  " autocmd FileType gn AutoFormatBuffer gn
+  " autocmd FileType java AutoFormatBuffer google-java-format
+  " autocmd FileType python AutoFormatBuffer autopep8
+augroup END
+" Set the clang format style.
+Glaive codefmt clang_format_style="Google"
+
+
 " ###########################################################################
 " Miscellaneous
 " ###########################################################################
+"
+" Automatically leave paste mode after exiting insert mode,
+" (wrapped in an augroup in case .vimrc gets reloaded).
+augroup paste
+  autocmd!
+  autocmd InsertLeave * set nopaste
+augroup END
 
 " 'This will enable all the plugins. This line needs to happen after all of the
 " plugin files have been added to your runtimepath. If it happens too early,
