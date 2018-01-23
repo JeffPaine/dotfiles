@@ -290,6 +290,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" Lint a file.
+nnoremap <leader>l :SyntasticCheck<CR>
+
 " https://github.com/Raimondi/delimitMate
 " Auto expand enclosing brackets, etc. in insert mode on <CR>. e.g.:
 "
@@ -312,8 +315,12 @@ augroup autoformat_settings
   " autocmd FileType java AutoFormatBuffer google-java-format
   " autocmd FileType python AutoFormatBuffer autopep8
 augroup END
+
 " Set the clang format style.
 Glaive codefmt clang_format_style="Google"
+
+" Format a file.
+nnoremap <leader>f :FormatCode<CR>
 
 
 " ###########################################################################
