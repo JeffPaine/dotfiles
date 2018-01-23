@@ -307,13 +307,13 @@ let delimitMate_expand_cr=1
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType go AutoFormatBuffer goimports
   autocmd FileType html,css,json AutoFormatBuffer js-beautify
   autocmd FileType python AutoFormatBuffer yapf
+  " autocmd FileType python AutoFormatBuffer autopep8
   " autocmd FileType dart AutoFormatBuffer dartfmt
   " autocmd FileType gn AutoFormatBuffer gn
   " autocmd FileType java AutoFormatBuffer google-java-format
-  " autocmd FileType python AutoFormatBuffer autopep8
 augroup END
 
 " Set the clang format style.
