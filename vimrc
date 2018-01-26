@@ -322,6 +322,10 @@ Glaive codefmt clang_format_style="Google"
 " Format a file.
 nnoremap <leader>f :FormatCode<CR>
 
+" https://github.com/tpope/vim-commentary
+" Prefer c++ comments like // instead of /* */.
+autocmd FileType cpp setlocal commentstring=//%s
+
 
 " ###########################################################################
 " Miscellaneous
