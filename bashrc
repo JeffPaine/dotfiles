@@ -96,3 +96,17 @@ if [[ $(hostname) = "sky" ]]; then
 fi
 
 alias ls='ls --color=auto'
+
+# less: Nice colors for man pages / less: https://stackoverflow.com/a/22202558
+export LESS_TERMCAP_mb=$'\E[01;31m'                # begin blinking
+export LESS_TERMCAP_md=$'\E[01;38;5;74m'           # begin bold
+export LESS_TERMCAP_me=$'\E[0m'                    # end mode
+export LESS_TERMCAP_se=$'\E[0m'                    # end standout-mode
+export LESS_TERMCAP_so=$'\E[38;5;016m\E[48;5;220m' # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'                    # end underline
+export LESS_TERMCAP_us=$'\E[04;38;5;146m'          # begin underline
+
+# less: show a searched for word or moved-to location in the middle of the
+# visible screen. The default is to show it at the top, which is not helpful for
+# context.
+export LESS='-j.5'
