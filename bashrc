@@ -106,7 +106,10 @@ export LESS_TERMCAP_so=$'\E[38;5;016m\E[48;5;220m' # begin standout-mode - info 
 export LESS_TERMCAP_ue=$'\E[0m'                    # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m'          # begin underline
 
-# less: show a searched for word or moved-to location in the middle of the
+# less:
+# -j.5: show a searched for word or moved-to location in the middle of the
 # visible screen. The default is to show it at the top, which is not helpful for
 # context.
-export LESS='-j.5'
+# R: allow ANSI escape sequences to pass through unscathed (e.g. from git
+# diffs). https://stackoverflow.com/a/20414664
+export LESS='R-j.5'
