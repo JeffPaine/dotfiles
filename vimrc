@@ -178,7 +178,7 @@ map <C-w>- <C-w>s
 nnoremap Y y$
 
 " The escape key is too far away
-imap jj <Esc>
+imap jj <Esc>l
 
 " Vertically center searched-for text on screen.
 nnoremap n nzz
@@ -202,6 +202,9 @@ nnoremap <leader>w :w<CR>
 " Quick quit.
 nnoremap <leader>q :q<CR>
 
+" Quick quit all buffers.
+nnoremap <leader>Q :qall<CR>
+
 " Quick hide search highlighting.
 nnoremap <leader>n :nohlsearch<CR>
 
@@ -222,6 +225,8 @@ nnoremap <leader>p :set paste<CR>
 nnoremap <leader>np :set nopaste<CR>
 set pastetoggle=<F4>
 
+" Do not show stupid q: window
+map q: :q
 
 " Change tabs conveniently.
 noremap <C-n> gt
@@ -304,17 +309,19 @@ nnoremap <leader>l :SyntasticCheck<CR>
 let delimitMate_expand_cr=1
 
 " https://github.com/google/vim-codefmt
-augroup autoformat_settings
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType go AutoFormatBuffer goimports
-  autocmd FileType html,css,json AutoFormatBuffer js-beautify
-  autocmd FileType python AutoFormatBuffer yapf
-  " autocmd FileType python AutoFormatBuffer autopep8
-  " autocmd FileType dart AutoFormatBuffer dartfmt
-  " autocmd FileType gn AutoFormatBuffer gn
-  " autocmd FileType java AutoFormatBuffer google-java-format
-augroup END
+if !filereadable(expand('~/.at_work.vimrc'))
+  augroup autoformat_settings
+    autocmd FileType bzl AutoFormatBuffer buildifier
+    autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+    autocmd FileType go AutoFormatBuffer goimports
+    autocmd FileType html,css,json AutoFormatBuffer js-beautify
+    autocmd FileType python AutoFormatBuffer yapf
+    " autocmd FileType python AutoFormatBuffer autopep8
+    " autocmd FileType dart AutoFormatBuffer dartfmt
+    " autocmd FileType gn AutoFormatBuffer gn
+    " autocmd FileType java AutoFormatBuffer google-java-format
+  augroup END
+endif
 
 " Set the clang format style.
 Glaive codefmt clang_format_style="Google"
