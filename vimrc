@@ -30,18 +30,15 @@ Plugin 'tpope/vim-commentary'            " Easy [un]commenting of lines.
 Plugin 'scrooloose/nerdtree'             " File explorer.
 Plugin 'tomasr/molokai'                  " A nice color scheme.
 Plugin 'tpope/vim-eunuch'                " https://github.com/tpope/vim-eunuch: Add things like :Move, :Rename, etc.
-" required by google/vim-codefmt.
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
-Plugin 'google/vim-glaive'
 
 " Some work-only settings.
 if filereadable(expand('~/.at_work.vimrc'))
   source ~/.at_work.vimrc
 else
   Plugin 'Valloric/YouCompleteMe'
+  Plugin 'google/vim-maktaba' " required by google/vim-codefmt.
+  Plugin 'google/vim-codefmt'
+  Plugin 'google/vim-glaive'  " Used to configure codefmt's maktaba flags. See `:help :Glaive` for usage.
 endif
 
 " All of your Plugins must be added before the following line
@@ -136,7 +133,7 @@ set autoread
 set history=1000
 
 " Nice invisible character representations
-set listchars=trail:-,extends:>,precedes:<,nbsp:+,tab:▸\ ,eol:¬
+set listchars=trail:-,extends:>,precedes:<,nbsp:+,tab:▸\ ,eol:¬,space:␣
 
 " Delete comment character when joining commented lines, if our version
 " supports it.
@@ -176,9 +173,6 @@ map <C-w>- <C-w>s
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
-
-" The escape key is too far away
-imap jj <Esc>l
 
 " Vertically center searched-for text on screen.
 nnoremap n nzz
@@ -221,9 +215,9 @@ nnoremap <leader>nn :nohlsearch<CR>
 nnoremap <leader>r :source $MYVIMRC<CR>
 
 " Quickly enter/exit paste mode.
-nnoremap <leader>p :set paste<CR>
-nnoremap <leader>np :set nopaste<CR>
-set pastetoggle=<F4>
+" nnoremap <leader>p :set paste<CR>
+" nnoremap <leader>np :set nopaste<CR>
+" set pastetoggle=<F4>
 
 " Do not show stupid q: window
 map q: :q
@@ -232,8 +226,8 @@ map q: :q
 noremap <C-n> gt
 noremap <C-p> gT
 
-" Open a new tab.
-noremap <C-t> :tabnew<CR>
+" Open a new tab at the end of all current tabs.
+noremap <C-t> :$tabnew<CR>
 
 " Move to start / end of lines more conveniently.
 nnoremap <C-a> ^
@@ -279,10 +273,18 @@ nnoremap <leader>nt :NERDTree<CR>
 nmap <leader>t Tqgt
 
 " https://github.com/vim-syntastic/syntastic
+"
+" :h syntastic_mode_map
+" 'In active mode, automatic checks are not done for
+" any filetypes in the 'passive_filetypes' array ("active_filetypes" is
+" ignored).'
+"
+" Here we ignore python because it's slow and cpp because YouCompleteMe does
+" it's own checking.
 let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "active_filetypes": [],
-    \ "passive_filetypes": ["python"] }
+    \ "passive_filetypes": ["python", "cpp"] }
 
 " As recommended by :h syntastic-recommended.
 " https://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic.txt#L116.
@@ -290,9 +292,23 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" These flags documented at:
+" https://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic.txt
+"
+" By default syntastic doesn't fill the |location-list| with the errors found by
+" the checkers, in order to reduce clashes with other plugins. Enable this
+" option to tell syntastic to always stick any detected errors into the
+" |location-list|.
 let g:syntastic_always_populate_loc_list = 1
+" When set to 1 the error window will be automatically opened when errors are
+" detected, and closed when none are detected.
 let g:syntastic_auto_loc_list = 1
+" If this variable is enabled, syntastic in active mode will run syntax checks
+" when buffers are first loaded, as well as on saving.
 let g:syntastic_check_on_open = 1
+" In active mode syntax checks are normally run whenever buffers are written to
+" disk, even when the writes happen just before quitting Vim. If you want to
+" skip checks when you issue `:wq`, `:x`, and `:ZZ`, set this variable to 0.
 let g:syntastic_check_on_wq = 0
 
 " Lint a file.
@@ -324,7 +340,7 @@ if !filereadable(expand('~/.at_work.vimrc'))
 endif
 
 " Set the clang format style.
-Glaive codefmt clang_format_style="Google"
+Glaive codefmt clang_format_style="{BasedOnStyle: Google, DerivePointerAlignment: false}"
 
 " Format a file.
 nnoremap <leader>f :FormatCode<CR>
