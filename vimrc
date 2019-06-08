@@ -329,7 +329,7 @@ if !filereadable(expand('~/.at_work.vimrc'))
   augroup autoformat_settings
     autocmd FileType bzl AutoFormatBuffer buildifier
     autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-    autocmd FileType go AutoFormatBuffer goimports
+    autocmd FileType go AutoFormatBuffer gofmt
     autocmd FileType html,css,json AutoFormatBuffer js-beautify
     autocmd FileType python AutoFormatBuffer yapf
     " autocmd FileType python AutoFormatBuffer autopep8
