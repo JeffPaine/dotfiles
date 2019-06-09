@@ -127,9 +127,9 @@ if [[ -d "/usr/local/go/bin" ]]; then
 	export PATH=$PATH:/usr/local/go/bin
 fi
 
-# Set our $GOPATH
+# Set $GOPATH.
 # http://golang.org/doc/code.html#GOPATH
-export GOPATH=$HOME
+export GOPATH=$HOME/go
 
 # # Add the Heroku Toolbelt.
 # export PATH="/usr/local/heroku/bin:$PATH"
