@@ -84,6 +84,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias gdb='gdb -q'
 
+alias blaze='bazel'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -109,20 +111,25 @@ fi
 # Personal customizations
 #################################################################################
 
-# Add $HOME/bin/ to our $PATH
+# Add $HOME/bin/ to our $PATH.
 if [[ -d "$HOME/bin" ]]; then
 	export PATH=$PATH:$HOME/bin
 fi
 
-# # Add the golang install location to our $PATH
-# # http://golang.org/doc/install#osx
-# if [[ -d "/usr/local/go/bin" ]]; then
-# 	export PATH=$PATH:/usr/local/go/bin
-# fi
+# Add $HOME/go/bin/ to our $PATH.
+if [[ -d "$HOME/go/bin" ]]; then
+	export PATH=$PATH:$HOME/go/bin
+fi
 
-# # Set our $GOPATH
-# # http://golang.org/doc/code.html#GOPATH
-# export GOPATH=$HOME
+# Add the golang install location to our $PATH.
+# https://golang.org/doc/install
+if [[ -d "/usr/local/go/bin" ]]; then
+	export PATH=$PATH:/usr/local/go/bin
+fi
+
+# Set $GOPATH.
+# http://golang.org/doc/code.html#GOPATH
+export GOPATH=$HOME/go
 
 # # Add the Heroku Toolbelt.
 # export PATH="/usr/local/heroku/bin:$PATH"

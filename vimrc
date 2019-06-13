@@ -18,12 +18,12 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'               " let Vundle manage Vundle, required
-Plugin 'fatih/vim-go'                    " Go-specific helpers.
+Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Go-specific helpers.
 Plugin 'vim-syntastic/syntastic'         " Syntax checking.
 Plugin 'Raimondi/delimitMate'            " Bracket (etc.) matching / closing.
 Plugin 'tpope/vim-surround'              " Easily add, subtract quotes / parentheses, etc
 Plugin 'tpope/vim-repeat'                " Enable repeating (e.g. using '.') in supported plugins.
-Plugin 'bling/vim-airline'               " A nice statusline
+Plugin 'vim-airline/vim-airline'         " A nice statusline
 Plugin 'ConradIrwin/vim-bracketed-paste' " Auto-enter paste mode when pasting.
 Plugin 'godlygeek/tabular'               " Align text based on delimeters
 Plugin 'tpope/vim-commentary'            " Easy [un]commenting of lines.
@@ -258,11 +258,20 @@ autocm Filetype cpp setlocal tabstop=2 shiftwidth=2 expandtab
 " Plugin specific
 " ###########################################################################
 
-" github.com/fatih/vim-go
-" Turn on fmt-on-save.
+" https://github.com/fatih/vim-go.
+"
+" :h go-settings
+"
+" Use this option to auto :GoFmt on save. By default it's enabled.
 let g:go_fmt_autosave = 1
-" Use goimports as our auto-save fmt-er.
+" Use this option to define which tool is used to gofmt. By default `gofmt` is
+" used.
 let g:go_fmt_command = "goimports"
+" Use this option to disable showing a location list when `g:go_fmt_command`
+" fails. By default the location list is shown.
+" This was set to avoid conflicts betwen vim-go and syntastic. More info: :h
+" syntastic-vim-go.
+let g:go_fmt_fail_silently = 1
 
 " YouCompleteMe
 " Auto-close function signature pane after insertion.
@@ -277,25 +286,25 @@ nmap <leader>t Tqgt
 
 " https://github.com/vim-syntastic/syntastic
 "
+" Since we use https://github.com/vim-airline/vim-airline, per :h
+" syntastic-airline, we should not set a custom statusline, as airline will
+" take care of it for us.
+"
 " :h syntastic_mode_map
 " 'In active mode, automatic checks are not done for
 " any filetypes in the 'passive_filetypes' array ("active_filetypes" is
 " ignored).'
 "
-" Here we ignore python because it's slow and cpp because YouCompleteMe does
-" it's own checking.
+" * python: passive because it's slow
+" * c, cpp: passive because YouCompleteMe does it's own checking, :h syntastic-ycm
 let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "active_filetypes": [],
-    \ "passive_filetypes": ["python", "cpp"] }
-
-" As recommended by :h syntastic-recommended.
-" https://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic.txt#L116.
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" These flags documented at:
+    \ "passive_filetypes": ["python", "c", "cpp"] }
+" See :h syntastic-vim-go.
+let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter', 'gofmt']
+let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+" The below flags are documented at:
 " https://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic.txt
 "
 " By default syntastic doesn't fill the |location-list| with the errors found by
@@ -332,7 +341,8 @@ if !filereadable(expand('~/.at_work.vimrc'))
   augroup autoformat_settings
     autocmd FileType bzl AutoFormatBuffer buildifier
     autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-    autocmd FileType go AutoFormatBuffer goimports
+    " Done via vim-go.
+    " autocmd FileType go AutoFormatBuffer gofmt
     autocmd FileType html,css,json AutoFormatBuffer js-beautify
     autocmd FileType python AutoFormatBuffer yapf
     " autocmd FileType python AutoFormatBuffer autopep8
