@@ -182,6 +182,9 @@ nnoremap N Nzz
 nnoremap j gj
 nnoremap k gk
 
+" Don't move to the next instance of a string when highlighting all matches.
+nnoremap * *``
+
 " Re-highlight lines after shifting them.
 vnoremap < <gv
 vnoremap > >gv
