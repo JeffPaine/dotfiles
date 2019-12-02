@@ -171,6 +171,12 @@ map <C-w>\ <C-w>v
 " - for horizontal split.
 map <C-w>- <C-w>s
 
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
@@ -226,6 +232,7 @@ nnoremap <leader>r :source $MYVIMRC<CR>
 map q: :q
 
 " Change tabs conveniently.
+noremap <C-Tab> gt
 noremap <C-n> gt
 noremap <C-p> gT
 
@@ -302,7 +309,7 @@ let g:syntastic_mode_map = {
     \ "active_filetypes": [],
     \ "passive_filetypes": ["python", "c", "cpp"] }
 " See :h syntastic-vim-go.
-let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter', 'gofmt']
+let g:syntastic_go_checkers = ['golint', 'gometalinter', 'gofmt']
 let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
 " The below flags are documented at:
 " https://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic.txt
