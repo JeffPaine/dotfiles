@@ -297,6 +297,24 @@ let g:go_def_mapping_enabled = 0
 " This was set to avoid conflicts betwen vim-go and syntastic. More info: :h
 " syntastic-vim-go.
 let g:go_fmt_fail_silently = 1
+" vim-go version 1.4 and earlier always uses |quickfix| lists. Starting with
+" version 1.5, vim-go can also use location lists (see |location-list|). To
+" avoid conflicts with syntastic, you probably want to configure vim-go to
+" stick with |quickfix| lists: >
+let g:go_list_type = "quickfix"
+" The checkers that will be run by our linter. The default linter for vim-go
+" is `golangci-lint`. To manually run the linter: :GoMetaLinter
+" More info: :h GoMetaLinter
+"
+" Defaults for this command under vim-go seem to be set via
+" https://github.com/fatih/vim-go/blob/master/autoload/go/config.vim (search
+" for `golangci-list`).
+"
+" The defaults for the CLI tool can be viewed via:
+"     $ golangci-lint help linters
+"
+" Here we enable all the default checkers from the CLI.
+let g:go_metalinter_enabled = ["deadcode", "errcheck", "ineffassign", "structcheck", "typecheck", "varcheck", "gosimple", "govet", "staticcheck", "unused", "golint"]
 
 " https://github.com/vim-syntastic/syntastic
 "
