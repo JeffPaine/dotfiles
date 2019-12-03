@@ -268,6 +268,16 @@ autocm Filetype cpp setlocal tabstop=2 shiftwidth=2 expandtab
 " Plugin specific
 " ###########################################################################
 
+" https://github.com/ycm-core/YouCompleteMe.
+"
+" Auto-close function signature pane after insertion.
+let g:ycm_autoclose_preview_window_after_insertion=1
+
+" https://github.com/scrooloose/nerdtree.
+"
+" Quick show NERDTree.
+nnoremap <leader>nt :NERDTree<CR>
+
 " https://github.com/fatih/vim-go.
 "
 " :h go-settings
@@ -282,16 +292,6 @@ let g:go_fmt_command = "goimports"
 " This was set to avoid conflicts betwen vim-go and syntastic. More info: :h
 " syntastic-vim-go.
 let g:go_fmt_fail_silently = 1
-
-" https://github.com/ycm-core/YouCompleteMe.
-"
-" Auto-close function signature pane after insertion.
-let g:ycm_autoclose_preview_window_after_insertion=1
-
-" https://github.com/scrooloose/nerdtree.
-"
-" Quick show NERDTree.
-nnoremap <leader>nt :NERDTree<CR>
 
 " https://github.com/vim-syntastic/syntastic
 "
