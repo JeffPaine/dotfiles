@@ -336,6 +336,9 @@ let g:syntastic_mode_map = {
 " See :h syntastic-vim-go.
 let g:syntastic_go_checkers = ['golint', 'gometalinter', 'gofmt']
 let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+" Run all syntastic checkers and display their findings together. For more
+" info see :h syntastic-aggregating-errors.
+let g:syntastic_aggregate_errors = 1
 " The below flags are documented at:
 " https://github.com/vim-syntastic/syntastic/blob/master/doc/syntastic.txt
 "
