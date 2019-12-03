@@ -208,6 +208,9 @@ nnoremap <leader>q :q<CR>
 " Quick quit all buffers.
 nnoremap <leader>Q :qall<CR>
 
+" Open a file in a new tab, and change to that tab.
+nnoremap <leader>t Tqgt
+
 " Quick hide search highlighting.
 nnoremap <leader>n :nohlsearch<CR>
 
@@ -280,16 +283,15 @@ let g:go_fmt_command = "goimports"
 " syntastic-vim-go.
 let g:go_fmt_fail_silently = 1
 
-" YouCompleteMe
+" https://github.com/ycm-core/YouCompleteMe.
+"
 " Auto-close function signature pane after insertion.
 let g:ycm_autoclose_preview_window_after_insertion=1
 
-" NERDTree.
+" https://github.com/scrooloose/nerdtree.
+"
 " Quick show NERDTree.
 nnoremap <leader>nt :NERDTree<CR>
-
-" Open a file in a new tab, and change to that tab.
-nmap <leader>t Tqgt
 
 " https://github.com/vim-syntastic/syntastic
 "
@@ -366,6 +368,7 @@ Glaive codefmt clang_format_style="{BasedOnStyle: Google, DerivePointerAlignment
 nnoremap <leader>f :FormatCode<CR>
 
 " https://github.com/tpope/vim-commentary
+"
 " Prefer c++ comments like // instead of /* */.
 autocmd FileType cpp setlocal commentstring=//%s
 
