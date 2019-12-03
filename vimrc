@@ -306,6 +306,9 @@ let g:go_list_type = "quickfix"
 " is `golangci-lint`. To manually run the linter: :GoMetaLinter
 " More info: :h GoMetaLinter
 "
+" To see the exact command that vim-go is running, set:
+" `let g:go_debug=['shell-commands']` and then run the command.
+"
 " Defaults for this command under vim-go seem to be set via
 " https://github.com/fatih/vim-go/blob/master/autoload/go/config.vim (search
 " for `golangci-list`).
@@ -333,9 +336,17 @@ let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "active_filetypes": [],
     \ "passive_filetypes": ["python", "c", "cpp"] }
-" See :h syntastic-vim-go.
-let g:syntastic_go_checkers = ['golint', 'gometalinter', 'gofmt']
-let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+" You can tell syntastic which checkers to run for a given filetype by setting
+" a variable 'g:syntastic_<filetype>_checkers' to a list of checkers. More
+" info: :h syntastic-filetype-checkers
+"
+" You can customize the flags passed to a syntastic checker, by setting a
+" specialliy named variable like `syntastic_<filetype>_<checker>_<option>`.
+" More info: :h syntastic-config-makeprg
+"
+" For linting go code we use the `golangci-lint` tool which itself supports
+" running multiple linters: https://github.com/golangci/golangci-lint.
+let g:syntastic_go_checkers = ['golangci_lint']
 " Run all syntastic checkers and display their findings together. For more
 " info see :h syntastic-aggregating-errors.
 let g:syntastic_aggregate_errors = 1
