@@ -287,6 +287,11 @@ let g:go_fmt_autosave = 1
 " Use this option to define which tool is used to gofmt. By default `gofmt` is
 " used.
 let g:go_fmt_command = "goimports"
+" Use this option to enable/disable the default mapping of CTRL-],
+" <C-LeftMouse>, g<C-LeftMouse> and (`gd`) for GoDef and CTRL-t for :GoDefPop.
+" Disabling it allows you to map something else to these keys or mappings.
+" Default is enabled.
+let g:go_def_mapping_enabled = 0
 " Use this option to disable showing a location list when `g:go_fmt_command`
 " fails. By default the location list is shown.
 " This was set to avoid conflicts betwen vim-go and syntastic. More info: :h
