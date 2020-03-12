@@ -369,6 +369,13 @@ nnoremap <leader>f :FormatCode<CR>
 " Prefer c++ comments like // instead of /* */.
 autocmd FileType cpp setlocal commentstring=//%s
 
+" https://github.com/vim-airline/vim-airline
+"
+" Fix tmux pane alignment issues:
+" https://github.com/vim-airline/vim-airline/issues/1745.
+let g:airline_powerline_fonts = 0
+let g:airline_symbols_ascii = 1
+
 
 " ###########################################################################
 " Miscellaneous
