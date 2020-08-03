@@ -317,6 +317,11 @@ let g:go_list_type = "quickfix"
 "
 " Here we enable all the default checkers from the CLI.
 let g:go_metalinter_enabled = ["deadcode", "errcheck", "ineffassign", "structcheck", "typecheck", "varcheck", "gosimple", "govet", "staticcheck", "unused", "golint"]
+" Use the official Go language server:
+" https://github.com/golang/tools/blob/master/gopls/README.md
+" https://github.com/golang/tools/blob/master/gopls/doc/vim.md#vim-go
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 " https://github.com/vim-syntastic/syntastic
 "
