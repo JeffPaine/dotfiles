@@ -29,7 +29,6 @@ Plugin 'godlygeek/tabular'               " Align text based on delimeters
 Plugin 'tpope/vim-commentary'            " Easy [un]commenting of lines.
 Plugin 'scrooloose/nerdtree'             " File explorer.
 Plugin 'tomasr/molokai'                  " A nice color scheme.
-Plugin 'tpope/vim-eunuch'                " https://github.com/tpope/vim-eunuch: Add things like :Move, :Rename, etc.
 
 " Some work-only settings.
 if filereadable(expand('~/.at_work.vimrc'))
