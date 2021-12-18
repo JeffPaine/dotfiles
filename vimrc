@@ -263,6 +263,9 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown|set textwidth=0
 " expandtab: In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
 autocm Filetype cpp setlocal tabstop=2 shiftwidth=2 expandtab
 
+" YAML
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " ###########################################################################
 " Plugin specific
 " ###########################################################################
