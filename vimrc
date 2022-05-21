@@ -149,6 +149,23 @@ set noswapfile
 " Use 256 colors.
 set t_Co=256
 
+" Fix the 1s delay in Insert mode between pressing Escape and vim actually
+" leaving Insert mode:
+"
+" timeoutlen = The delay to wait for successive vim keycodes entered by a
+" human. Such keycodes should not include <Esc> unless intentionally added. To
+" see any mappings in Insert mode that include the escape keycode: :imap <Esc>
+"
+" ttimeoutlen = The delay to wait for successive vime keycodes sent by a
+" terminal. Such keycodes could include <Esc> depending on the Terminal. This
+" would only need to be long if we had a really slow terminal or system.
+"
+" More info:
+"   * https://vi.stackexchange.com/questions/10249/what-is-the-difference-between-mapped-key-sequences-and-key-codes-timeoutl
+"   * https://vi.stackexchange.com/questions/24925/usage-of-timeoutlen-and-ttimeoutlen
+set timeoutlen=1000
+set ttimeoutlen=10
+
 " Custom colorscheme.
 colorscheme molokai
 
