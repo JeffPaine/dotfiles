@@ -84,8 +84,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias gdb='gdb -q'
 
-alias blaze='bazel'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -130,9 +128,6 @@ fi
 # Set $GOPATH.
 # http://golang.org/doc/code.html#GOPATH
 export GOPATH=$HOME/go
-
-# # Add the Heroku Toolbelt.
-# export PATH="/usr/local/heroku/bin:$PATH"
 
 # Set our default EDITOR
 EDITOR='vim'
