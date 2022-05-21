@@ -51,9 +51,6 @@ call glaive#Install()
 " General
 " ###########################################################################
 
-" Enable syntax highlighting
-syntax enable
-
 " This shows what you are typing in the status line.
 set showcmd
 
@@ -440,3 +437,6 @@ augroup END
 " certain plugin files may be ignored. It's easiest to just put it at the end of
 " your vimrc and forget about it.'
 filetype plugin indent on
+
+" Enable syntax highlighting
+syntax enable
