@@ -437,6 +437,12 @@ augroup END
 " Filetype specific
 " ###########################################################################
 
+" Go / golang
+" tabstop: Number of spaces that a <Tab> in the file counts for.
+" shiftwidth: How many columns text is indented with the reindent operations (<< and >>).
+" expandtab: In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
+autocmd Filetype go setlocal tabstop=4 textwidth=120 noexpandtab
+
 " Markdown
 " Assume markdown syntax for all .md files (not modula-2).
 " BufNewFile = When starting to edit a file that doesn't exist.
