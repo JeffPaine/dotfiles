@@ -9,7 +9,6 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 	s = status --short --branch --ignore-submodules=untracked
 	pom = push origin master
-	phm = push heroku master
 	cam = commit --all --message
 	cm = commit --message
 	co = checkout
