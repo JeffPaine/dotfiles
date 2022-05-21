@@ -12,5 +12,7 @@
 	phm = push heroku master
 	cam = commit --all --message
 	cm = commit --message
+	co = checkout
+	c = commit
 [pager]
 	branch = false
