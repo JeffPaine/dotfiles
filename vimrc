@@ -169,6 +169,18 @@ set ttimeoutlen=10
 " Custom colorscheme.
 colorscheme molokai
 
+" Set background to be completely black (not just mostly-black as molokai sets it).
+"
+" Plugins are loaded after .vimrc is processed, which means the settings from
+" ~/.vim/bundle/molokai/colors/molokai.vim override the custom color settings (highlight...) from
+" .vimrc. So, we either have to add this override to ~/.vim/after/plugin/molokai/molokai.vim (which
+" is annoying to maintain), or add it as a augroup.
+augroup CustomColors
+  autocmd!
+  autocmd ColorScheme molokai highlight Normal ctermbg=Black
+  autocmd ColorScheme molokai highlight nonText ctermbg=Black
+augroup END
+
 " Don't highlight matching parenthesis, braces, etc. (makes it hard to tell
 " where the cursor is).
 let g:loaded_matchparen=1
