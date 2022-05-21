@@ -269,6 +269,9 @@ vnoremap <C-e> $
 "
 " Auto-close function signature pane after insertion.
 let g:ycm_autoclose_preview_window_after_insertion=1
+" Disable automatic pop-ups on hover:
+" https://github.com/ycm-core/YouCompleteMe#the-gycm_auto_hover-option
+let g:ycm_auto_hover=''
 
 " https://github.com/scrooloose/nerdtree.
 "
