@@ -262,25 +262,6 @@ nnoremap <C-e> $
 vnoremap <C-e> $
 
 " ###########################################################################
-" Filetype specific
-" ###########################################################################
-
-" Markdown
-" Assume markdown syntax for all .md files (not modula-2).
-" BufNewFile = When starting to edit a file that doesn't exist.
-" BufRead = When starting to edit a new buffer, after reading the file into the buffer, before executing the modelines.
-autocmd BufNewFile,BufRead *.md set filetype=markdown|set textwidth=0
-
-" C++
-" tabstop: Number of spaces that a <Tab> in the file counts for.
-" shiftwidth: How many columns text is indented with the reindent operations (<< and >>).
-" expandtab: In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
-autocm Filetype cpp setlocal tabstop=2 shiftwidth=2 expandtab
-
-" YAML
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-" ###########################################################################
 " Plugin specific
 " ###########################################################################
 
@@ -448,6 +429,25 @@ augroup paste
   autocmd!
   autocmd InsertLeave * set nopaste
 augroup END
+
+" ###########################################################################
+" Filetype specific
+" ###########################################################################
+
+" Markdown
+" Assume markdown syntax for all .md files (not modula-2).
+" BufNewFile = When starting to edit a file that doesn't exist.
+" BufRead = When starting to edit a new buffer, after reading the file into the buffer, before executing the modelines.
+autocmd BufNewFile,BufRead *.md set filetype=markdown|set textwidth=0
+
+" C++
+" tabstop: Number of spaces that a <Tab> in the file counts for.
+" shiftwidth: How many columns text is indented with the reindent operations (<< and >>).
+" expandtab: In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
+autocm Filetype cpp setlocal tabstop=2 shiftwidth=2 expandtab
+
+" YAML
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " 'This will enable all the plugins. This line needs to happen after all of the
 " plugin files have been added to your runtimepath. If it happens too early,
