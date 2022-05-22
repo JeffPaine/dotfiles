@@ -151,6 +151,33 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# https://github.com/junegunn/fzf
+#
+export FZF_DEFAULT_OPTS='--reverse --multi --height 50%'
+# Enable keybindings (per /usr/share/doc/fzf/examples/key-bindings.bash).
+#
+# Docs: https://github.com/junegunn/fzf#key-bindings-for-command-line
+#
+#  <CTRL-t> - Paste the selected file path into the command line
+#  <CTRL-r> - Paste the selected command from history into the command line
+#  <ALT-c> - cd into the select directory
+if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
+	source /usr/share/doc/fzf/examples/key-bindings.bash
+fi
+# Enable fuzzy auto-completion (per /usr/share/doc/fzf/examples/key-bindings.bash).
+#
+# Docs: https://github.com/junegunn/fzf#fuzzy-completion-for-bash-and-zsh
+#
+#   $ vim **<TAB>
+#   $ cd **<TAB>
+#   $ kill **<TAB>
+#   $ ssh **<TAB>
+#
+# To change the trigger sequence from ** to something else:
+#  export FZF_COMPLETION_TRIGGER='~~'
+if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
+	source /usr/share/doc/fzf/examples/completion.bash
+fi
 
 #################################################################################
 # PS1 prompt
