@@ -161,6 +161,11 @@ export FZF_DEFAULT_OPTS='--reverse --multi --height 50%'
 #  <CTRL-t> - Paste the selected file path into the command line
 #  <CTRL-r> - Paste the selected command from history into the command line
 #  <ALT-c> - cd into the select directory
+#
+# NOTE: on ubuntu 20.04, this script was buggy after pressing <CTRL-r>, so I
+# replaced it manually with the contents of
+# https://github.com/junegunn/fzf/blob/0.29.0/shell/key-bindings.bash, which
+# seemed to work. After upgrading to 22.04, this may have to be cleaned up.
 if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
 	source /usr/share/doc/fzf/examples/key-bindings.bash
 fi
