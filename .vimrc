@@ -406,11 +406,29 @@ augroup END
 " Filetype specific
 " ###########################################################################
 
+" From http://vimcasts.org/episodes/tabs-and-spaces/:
+"
+" * tabstop: specifies the visually displayed width of a tab character
+" * expandtab: when enabled, causes spaces to be used in place of tab characters
+" * softtabstop: fine tunes the amount of whitespace to be inserted
+" * shiftwidth: the amount of whitespace to insert or remove when using the
+"   indentation commands in Normal mode
+"
+" In general, it's best to have softtabstop == shiftwidth so that you get
+" consistent behavior when shifting in Normal mode (e.g. << or >>) or when
+" you're inserting or removing spaces with the tab and backspace keys.
+"
+" If you prefer to work with tab characters then it is a good idea to ensure
+" that tabstop == softtabstop. This makes it less likely that you’ll end up
+" with a mixture of tabs and spaces for indentation.
+"
+" If you prefer to work with spaces, then it is preferable to ensure that
+" softtabstop == shiftwidth. This way, you can expect the same number of
+" spaces to be inserted whether you press the tab key in insert mode, or use
+" the indentation commands in normal/visual modes.
+
 " Go / golang
-" tabstop: Number of spaces that a <Tab> in the file counts for.
-" shiftwidth: How many columns text is indented with the reindent operations (<< and >>).
-" expandtab: In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
-autocmd Filetype go setlocal tabstop=4 textwidth=120 noexpandtab
+autocmd Filetype go setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=120 noexpandtab
 
 " Markdown
 " Assume markdown syntax for all .md files (not modula-2).
@@ -419,9 +437,6 @@ autocmd Filetype go setlocal tabstop=4 textwidth=120 noexpandtab
 autocmd BufNewFile,BufRead *.md set filetype=markdown|set textwidth=0
 
 " C++
-" tabstop: Number of spaces that a <Tab> in the file counts for.
-" shiftwidth: How many columns text is indented with the reindent operations (<< and >>).
-" expandtab: In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
 autocm Filetype cpp setlocal tabstop=2 shiftwidth=2 expandtab
 
 " YAML
