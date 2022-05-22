@@ -355,6 +355,10 @@ let delimitMate_expand_cr=1
 "
 if !filereadable(expand('~/.at_work.vimrc'))
   augroup autoformat_settings
+    " If there's already an augroup of the same name, delete it. Otherwise, it
+    " will be run more than once.
+    " https://learnvimscriptthehardway.stevelosh.com/chapters/14.html
+    autocmd!
     autocmd FileType bzl AutoFormatBuffer buildifier
     autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
     autocmd FileType go AutoFormatBuffer gofmt
