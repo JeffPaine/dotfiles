@@ -18,7 +18,6 @@ set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'               " let Vundle manage Vundle, required
-Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Go-specific helpers.
 Plugin 'vim-syntastic/syntastic'         " Syntax checking.
 Plugin 'Raimondi/delimitMate'            " Bracket (etc.) matching / closing.
 Plugin 'tpope/vim-surround'              " Easily add, subtract quotes / parentheses, etc
@@ -290,52 +289,6 @@ let g:ycm_auto_hover=''
 " Quick show NERDTree.
 nnoremap <leader>nt :NERDTree<CR>
 
-" https://github.com/fatih/vim-go.
-"
-" :h go-settings
-"
-" Use this option to auto :GoFmt on save. By default it's enabled.
-let g:go_fmt_autosave = 1
-" Use this option to define which tool is used to gofmt. By default `gofmt` is
-" used.
-let g:go_fmt_command = "goimports"
-" Use this option to enable/disable the default mapping of CTRL-],
-" <C-LeftMouse>, g<C-LeftMouse> and (`gd`) for GoDef and CTRL-t for :GoDefPop.
-" Disabling it allows you to map something else to these keys or mappings.
-" Default is enabled.
-let g:go_def_mapping_enabled = 0
-" Use this option to disable showing a location list when `g:go_fmt_command`
-" fails. By default the location list is shown.
-" This was set to avoid conflicts betwen vim-go and syntastic. More info: :h
-" syntastic-vim-go.
-let g:go_fmt_fail_silently = 1
-" vim-go version 1.4 and earlier always uses |quickfix| lists. Starting with
-" version 1.5, vim-go can also use location lists (see |location-list|). To
-" avoid conflicts with syntastic, you probably want to configure vim-go to
-" stick with |quickfix| lists: >
-let g:go_list_type = "quickfix"
-" The checkers that will be run by our linter. The default linter for vim-go
-" is `golangci-lint`. To manually run the linter: :GoMetaLinter
-" More info: :h GoMetaLinter
-"
-" To see the exact command that vim-go is running, set:
-" `let g:go_debug=['shell-commands']` and then run the command.
-"
-" Defaults for this command under vim-go seem to be set via
-" https://github.com/fatih/vim-go/blob/master/autoload/go/config.vim (search
-" for `golangci-list`).
-"
-" The defaults for the CLI tool can be viewed via:
-"     $ golangci-lint help linters
-"
-" Here we enable all the default checkers from the CLI.
-let g:go_metalinter_enabled = ["deadcode", "errcheck", "ineffassign", "structcheck", "typecheck", "varcheck", "gosimple", "govet", "staticcheck", "unused", "golint"]
-" Use the official Go language server:
-" https://github.com/golang/tools/blob/master/gopls/README.md
-" https://github.com/golang/tools/blob/master/gopls/doc/vim.md#vim-go
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-
 " https://github.com/vim-syntastic/syntastic
 "
 " Since we use https://github.com/vim-airline/vim-airline, per :h
@@ -385,7 +338,6 @@ let g:syntastic_check_on_open = 1
 " disk, even when the writes happen just before quitting Vim. If you want to
 " skip checks when you issue `:wq`, `:x`, and `:ZZ`, set this variable to 0.
 let g:syntastic_check_on_wq = 0
-
 " Lint a file.
 nnoremap <leader>l :SyntasticCheck<CR>
 
@@ -400,12 +352,12 @@ nnoremap <leader>l :SyntasticCheck<CR>
 let delimitMate_expand_cr=1
 
 " https://github.com/google/vim-codefmt
+"
 if !filereadable(expand('~/.at_work.vimrc'))
   augroup autoformat_settings
     autocmd FileType bzl AutoFormatBuffer buildifier
     autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-    " Done via vim-go.
-    " autocmd FileType go AutoFormatBuffer gofmt
+    autocmd FileType go AutoFormatBuffer gofmt
     autocmd FileType html,css,json AutoFormatBuffer js-beautify
     autocmd FileType python AutoFormatBuffer yapf
     " autocmd FileType python AutoFormatBuffer autopep8
@@ -414,10 +366,11 @@ if !filereadable(expand('~/.at_work.vimrc'))
     " autocmd FileType java AutoFormatBuffer google-java-format
   augroup END
 endif
-
+" Set a custom Go formatter.
+" More info: :h codefmt:gofmt_executable
+Glaive codefmt gofmt_executable='goimports'
 " Set the clang format style.
 Glaive codefmt clang_format_style="{BasedOnStyle: Google, DerivePointerAlignment: false}"
-
 " Format a file.
 nnoremap <leader>f :FormatCode<CR>
 
@@ -437,7 +390,7 @@ let g:airline_symbols_ascii = 1
 " ###########################################################################
 " Miscellaneous
 " ###########################################################################
-"
+
 " Automatically leave paste mode after exiting insert mode,
 " (wrapped in an augroup in case .vimrc gets reloaded).
 augroup paste
