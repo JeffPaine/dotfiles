@@ -430,6 +430,9 @@ augroup END
 " Go / golang
 autocmd Filetype go setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=120 noexpandtab
 
+" HTML
+autocmd Filetype html setlocal tabstop=2 softtabstop=2 shiftwidth=2 textwidth=120 expandtab
+
 " Markdown
 " Assume markdown syntax for all .md files (not modula-2).
 " BufNewFile = When starting to edit a file that doesn't exist.
