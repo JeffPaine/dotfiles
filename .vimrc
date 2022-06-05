@@ -369,6 +369,8 @@ endif
 Glaive codefmt gofmt_executable='goimports'
 " Set the clang format style.
 Glaive codefmt clang_format_style="{BasedOnStyle: Google, DerivePointerAlignment: false}"
+" Format a file.
+nnoremap <leader>f :FormatCode<CR>
 
 " https://github.com/tpope/vim-commentary
 "
@@ -384,13 +386,25 @@ let g:airline_symbols_ascii = 1
 
 " https://github.com/junegunn/fzf.vim
 "
-"   * First part: the preview window location.
-"   * Second part: CTRL-/ will toggle the preview window.
+" More info on options: https://github.com/junegunn/fzf/blob/master/README-VIM.md
+"
+" Navigate results up and down: <C-n> and <C-p>
+" Open in new tab: <C-t>
+" Open in vertical split: <C-v>
+" Open in horizontal split: <C-x>
+" Open fzf popup in a full screen window: :Files!
+"
+" Appearance of the entire popup window.
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+" Appearance of the preview portion of the popup window.
+"
+" * First part: the preview window location.
+" * Second part: CTRL-/ will toggle the preview window.
 "
 " More info on preview window options: `man fzf` and see the '--preview-window' section.
 let g:fzf_preview_window = ['down:50%', 'ctrl-/']
 " Open files in the fzf search + preview window.
-nnoremap <leader>f :Files<CR>
+nnoremap <C-p> :Files<Cr>
 
 
 " ###########################################################################
