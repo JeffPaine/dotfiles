@@ -28,6 +28,8 @@ Plugin 'godlygeek/tabular'               " Align text based on delimeters
 Plugin 'tpope/vim-commentary'            " Easy [un]commenting of lines.
 Plugin 'scrooloose/nerdtree'             " File explorer.
 Plugin 'tomasr/molokai'                  " A nice color scheme.
+Plugin 'junegunn/fzf'                    " fzf base vim plugin (required by fzf.vim), https://github.com/junegunn/fzf
+Plugin 'junegunn/fzf.vim'                " fzf integration, https://github.com/junegunn/fzf.vim
 
 " Some work-only settings.
 if filereadable(expand('~/.at_work.vimrc'))
@@ -367,8 +369,6 @@ endif
 Glaive codefmt gofmt_executable='goimports'
 " Set the clang format style.
 Glaive codefmt clang_format_style="{BasedOnStyle: Google, DerivePointerAlignment: false}"
-" Format a file.
-nnoremap <leader>f :FormatCode<CR>
 
 " https://github.com/tpope/vim-commentary
 "
@@ -381,6 +381,16 @@ autocmd FileType cpp setlocal commentstring=//%s
 " https://github.com/vim-airline/vim-airline/issues/1745.
 let g:airline_powerline_fonts = 0
 let g:airline_symbols_ascii = 1
+
+" https://github.com/junegunn/fzf.vim
+"
+"   * First part: the preview window location.
+"   * Second part: CTRL-/ will toggle the preview window.
+"
+" More info on preview window options: `man fzf` and see the '--preview-window' section.
+let g:fzf_preview_window = ['down:50%', 'ctrl-/']
+" Open files in the fzf search + preview window.
+nnoremap <leader>f :Files<CR>
 
 
 " ###########################################################################
