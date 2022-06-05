@@ -35,6 +35,9 @@ Plugin 'junegunn/fzf.vim'                " fzf integration, https://github.com/j
 if filereadable(expand('~/.at_work.vimrc'))
   source ~/.at_work.vimrc
 else
+  " After install, per https://github.com/ycm-core/YouCompleteMe#linux-64-bit:
+  " $ cd ~/.vim/bundle/YouCompleteMe
+  " $ python3 install.py --go-completer
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'google/vim-maktaba' " required by google/vim-codefmt.
   Plugin 'google/vim-codefmt'
