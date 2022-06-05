@@ -244,9 +244,6 @@ nnoremap <leader>a ggVG<CR>
 " Copy to system copy-paste buffer.
 vnoremap <leader>c "+y<CR>
 
-" Hide highlighted text.
-nnoremap <leader>nn :nohlsearch<CR>
-
 " Reload .vimrc.
 nnoremap <leader>r :source $MYVIMRC<CR>
 
