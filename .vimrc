@@ -281,11 +281,6 @@ let g:ycm_autoclose_preview_window_after_insertion=1
 " https://github.com/ycm-core/YouCompleteMe#the-gycm_auto_hover-option
 let g:ycm_auto_hover=''
 
-" https://github.com/scrooloose/nerdtree.
-"
-" Quick show NERDTree.
-nnoremap <leader>nt :NERDTree<CR>
-
 " https://github.com/vim-syntastic/syntastic
 "
 " Since we use https://github.com/vim-airline/vim-airline, per :h
