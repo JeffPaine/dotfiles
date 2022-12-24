@@ -153,7 +153,7 @@ shopt -s checkwinsize
 
 # https://github.com/junegunn/fzf
 #
-export FZF_DEFAULT_OPTS='--reverse --multi --height 50%'
+export FZF_DEFAULT_OPTS='--reverse --multi --height 100%'
 # Include hidden files, but ignore .git/ directories.
 export FZF_DEFAULT_COMMAND='find . -type f -not -path "*/\.git/*" -printf "%P\n"'
 export FZF_CTRL_T_COMMAND='find . -type f -not -path "*/\.git/*" -printf "%P\n"'
