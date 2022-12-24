@@ -9,7 +9,7 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 	s = status
 	st = status --short --branch --ignore-submodules=untracked
-	pom = push origin master
+	pom = push origin main
 	cam = commit --all --message
 	cm = commit --message
 	co = checkout
