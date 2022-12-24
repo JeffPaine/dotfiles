@@ -84,6 +84,15 @@ set whichwrap+=<,>,[,],h,l
 " Show line numbers
 set number
 
+" " Insert mode: show absolute line numbers.
+" " Normal mode (and unfocused buffers): show relative line numbers.
+" " From https://jeffkreeftmeijer.com/vim-number/.
+" augroup numbertoggle
+"   autocmd!
+"   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+"   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+" augroup END
+
 " Highlight the current line.
 set cursorline
 
@@ -359,7 +368,7 @@ if !filereadable(expand('~/.at_work.vimrc'))
     autocmd FileType bzl AutoFormatBuffer buildifier
     autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
     autocmd FileType go AutoFormatBuffer gofmt
-    autocmd FileType html,css,json AutoFormatBuffer js-beautify
+    " autocmd FileType html,css,json AutoFormatBuffer js-beautify
     autocmd FileType python AutoFormatBuffer yapf
     " autocmd FileType python AutoFormatBuffer autopep8
     " autocmd FileType dart AutoFormatBuffer dartfmt
