@@ -233,12 +233,16 @@ prompt
 # Miscellaneous
 #################################################################################
 
-# sky only
-if [[ $(hostname) = "sky" ]]; then
-	# Enable bash-completion, per `brew install bash-completion`
-	if [ -f $(brew --prefix)/etc/bash_completion ]; then
-	  . $(brew --prefix)/etc/bash_completion
-	fi
+# macOS only.
+# https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#index-OSTYPE.
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Silence the idiotic bash warning message: https://apple.stackexchange.com/a/371998.
+    export BASH_SILENCE_DEPRECATION_WARNING=1
+
+    # Enable bash-completion, per `brew install bash-completion` 
+    # if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    #   source $(brew --prefix)/etc/bash_completion
+    # fi
 fi
 
 alias ls='ls --color=auto'
