@@ -20,12 +20,173 @@
     "terminal.integrated.defaultProfile.linux": "",
     "terminal.integrated.fontSize": 14,
     "vim.autoindent": true,
+    // Delegate configured keys to be handled by VS Code instead of by the VSCodeVim extension.
+    // https://github.com/VSCodeVim/Vim#vscodevim-settings.
+    "vim.handleKeys": {
+        // Ctrl-f should invoke the native VS Code find utility.
+        "<C-f>": false
+    },
     "vim.history": 1000,
     "vim.hlsearch": true,
     "vim.ignorecase": true,
     "vim.inccommand": "replace",
     "vim.incsearch": true,
     "vim.joinspaces": false,
+    // TBD vim customizations from .vimrc:
+    //
+    // " Re-highlight lines after shifting them.
+    // vnoremap < <gv
+    // vnoremap > >gv
+    //
+    // " Quit.
+    // nnoremap <leader>q :q<CR>
+    //
+    // " Quit all buffers.
+    // nnoremap <leader>Q :qall<CR>
+    //
+    // " Change tabs conveniently.
+    // noremap <C-Tab> gt
+    // noremap <C-n> gt
+    // noremap <C-p> gT
+    //
+    // " Open a new tab at the end of all current tabs.
+    // noremap <C-t> :$tabnew<CR>
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // Yank from the cursor to the end of the line, to be consistent with C and D.
+        {
+            "before": [
+                "Y"
+            ],
+            "after": [
+                "y",
+                "$"
+            ]
+        },
+        // Vertically center searched-for text on screen.
+        {
+            "before": [
+                "n"
+            ],
+            "after": [
+                "n",
+                "z",
+                "z"
+            ]
+        },
+        {
+            "before": [
+                "N"
+            ],
+            "after": [
+                "N",
+                "z",
+                "z"
+            ]
+        },
+        // Easy navigation on wrapped lines.
+        {
+            "before": [
+                "j"
+            ],
+            "after": [
+                "g",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "k"
+            ],
+            "after": [
+                "g",
+                "k"
+            ]
+        },
+        // Don't move to the next instance of a string when highlighting all matches.
+        {
+            "before": [
+                "*"
+            ],
+            "after": [
+                "*",
+                "`",
+                "`"
+            ]
+        },
+        // Save file.
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "after": [
+                ":",
+                "w",
+                "<CR>"
+            ]
+        },
+        // Hide search highlighting.
+        {
+            "before": [
+                "<leader>",
+                "n"
+            ],
+            "commands": [
+                // It's :nohl in https://github.com/VSCodeVim/Vim, not :nohlsearch.
+                ":nohl"
+            ]
+        },
+        // Select all text.
+        {
+            "before": [
+                "<leader>",
+                "a"
+            ],
+            "after": [
+                "g",
+                "g",
+                "V",
+                "G",
+                "<CR>"
+            ]
+        },
+        // Move to start / end of lines like in bash.
+        {
+            "before": [
+                "<C-a>"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "<C-e>"
+            ],
+            "after": [
+                "$"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        // Move to start / end of lines like in bash.
+        {
+            "before": [
+                "<C-a>"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "<C-e>"
+            ],
+            "after": [
+                "$"
+            ]
+        }
+    ],
     "vim.leader": ",",
     "vim.showcmd": true,
     "vim.showmodename": true,
@@ -37,7 +198,7 @@
     // .vimrc support only includes remaps: https://github.com/VSCodeVim/Vim#vimrc-support.
     // File location is configured by `vim.vimrc.path`, which includes $HOME/.vimrc, among
     // others.
-    "vim.vimrc.enable": true,
+    "vim.vimrc.enable": false,
     "vim.visualstar": true,
     "vim.whichwrap": "<,>,[,],h,l",
     "window.zoomLevel": 1
