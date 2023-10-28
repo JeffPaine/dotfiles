@@ -239,10 +239,23 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Silence the idiotic bash warning message: https://apple.stackexchange.com/a/371998.
     export BASH_SILENCE_DEPRECATION_WARNING=1
 
-    # Enable bash-completion, per `brew install bash-completion` 
-    # if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    #   source $(brew --prefix)/etc/bash_completion
-    # fi
+    # Homebrew: https://brew.sh/.
+    # Install locations:
+    #   Apple silicon (e.g. M1, etc.): /opt/homebrew
+    #   Intel silicon: /usr/local
+    HOMEBREW_PATH='/opt/homebrew/bin/brew'
+    if [[ -x "${HOMEBREW_PATH:?}" ]]; then
+        # Set Homebrew-related shell variables (PATH, etc.).
+        eval "$(${HOMEBREW_PATH:?} shellenv)"
+
+        # Disable analytics: https://docs.brew.sh/Analytics#opting-out.
+        export HOMEBREW_NO_ANALYTICS=1
+
+        # Enable bash-completion, https://formulae.brew.sh/formula/bash-completion.
+        if [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]]; then
+            . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+        fi
+    fi
 fi
 
 alias ls='ls --color=auto'
