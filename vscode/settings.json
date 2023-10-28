@@ -34,10 +34,6 @@
     "vim.joinspaces": false,
     // TBD vim customizations from .vimrc:
     //
-    // " Re-highlight lines after shifting them.
-    // vnoremap < <gv
-    // vnoremap > >gv
-    //
     // " Quit.
     // nnoremap <leader>q :q<CR>
     //
@@ -184,6 +180,27 @@
             ],
             "after": [
                 "$"
+            ]
+        },
+        // " Re-highlight lines after shifting them.
+        {
+            "before": [
+                "<"
+            ],
+            "after": [
+                "<",
+                "g",
+                "v"
+            ]
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "after": [
+                ">",
+                "g",
+                "v"
             ]
         }
     ],
