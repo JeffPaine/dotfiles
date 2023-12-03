@@ -4,22 +4,42 @@
 //   macOS $HOME/Library/Application\ Support/Code/User/settings.json
 //   Linux $HOME/.config/Code/User/settings.json
 {
+    "[go]": {
+        // Golang specific settings: https://code.visualstudio.com/docs/languages/go.
+        //
+        // vscode-go settings start with "go." and don't belong here.
+        // Docs: https://github.com/golang/vscode-go/blob/master/docs/settings.md.
+    },
+    "[markdown]": {
+        // Markdown specific settings: https://code.visualstudio.com/docs/languages/markdown
+    },
     "debug.console.fontSize": 14,
+    "editor.cursorStyle": "block",
     "editor.fontFamily": "Hack, Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 14,
     "editor.formatOnSave": true,
+    "editor.lightbulb.enabled": false,
     "editor.minimap.enabled": false,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.occurrencesHighlight": false,
     "editor.renderWhitespace": "all",
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "go.formatTool": "goimports",
+    "git.confirmSync": false,
+    // Don't show test coverage when the "Go: Test Package" command is run.
+    "go.coverOnTestPackage": false,
+    "go.toolsManagement.autoUpdate": true,
+    "gopls": {
+        // https://code.visualstudio.com/docs/languages/go#_semantic-syntax-highlighting.
+        "ui.semanticTokens": true
+    },
     "python.defaultInterpreterPath": "/usr/bin/python3",
     "telemetry.telemetryLevel": "off",
     "terminal.integrated.defaultProfile.linux": "",
     "terminal.integrated.fontSize": 14,
     "vim.autoindent": true,
+    "vim.cursorStylePerMode.insert": "line",
+    "vim.cursorStylePerMode.normal": "block",
     // Delegate configured keys to be handled by VS Code instead of by the VSCodeVim extension.
     // https://github.com/VSCodeVim/Vim#vscodevim-settings.
     "vim.handleKeys": {
@@ -32,6 +52,7 @@
     "vim.inccommand": "replace",
     "vim.incsearch": true,
     "vim.joinspaces": false,
+    "vim.leader": ",",
     // TBD vim customizations from .vimrc:
     //
     // " Quit.
@@ -50,75 +71,75 @@
     "vim.normalModeKeyBindingsNonRecursive": [
         // Yank from the cursor to the end of the line, to be consistent with C and D.
         {
-            "before": [
-                "Y"
-            ],
             "after": [
                 "y",
                 "$"
+            ],
+            "before": [
+                "Y"
             ]
         },
         // Vertically center searched-for text on screen.
         {
-            "before": [
-                "n"
-            ],
             "after": [
                 "n",
                 "z",
                 "z"
+            ],
+            "before": [
+                "n"
             ]
         },
         {
-            "before": [
-                "N"
-            ],
             "after": [
                 "N",
                 "z",
                 "z"
+            ],
+            "before": [
+                "N"
             ]
         },
         // Easy navigation on wrapped lines.
-        {
-            "before": [
-                "j"
-            ],
-            "after": [
-                "g",
-                "j"
-            ]
-        },
-        {
-            "before": [
-                "k"
-            ],
-            "after": [
-                "g",
-                "k"
-            ]
-        },
+        // {
+        //     "before": [
+        //         "j"
+        //     ],
+        //     "after": [
+        //         "g",
+        //         "j"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "k"
+        //     ],
+        //     "after": [
+        //         "g",
+        //         "k"
+        //     ]
+        // },
         // Don't move to the next instance of a string when highlighting all matches.
         {
-            "before": [
-                "*"
-            ],
             "after": [
                 "*",
                 "`",
                 "`"
+            ],
+            "before": [
+                "*"
             ]
         },
         // Save file.
         {
-            "before": [
-                "<leader>",
-                "w"
-            ],
             "after": [
                 ":",
                 "w",
                 "<CR>"
+            ],
+            "before": [
+                "<leader>",
+                "w"
             ]
         },
         // Hide search highlighting.
@@ -134,77 +155,36 @@
         },
         // Select all text.
         {
-            "before": [
-                "<leader>",
-                "a"
-            ],
             "after": [
                 "g",
                 "g",
                 "V",
                 "G",
                 "<CR>"
+            ],
+            "before": [
+                "<leader>",
+                "a"
             ]
         },
         // Move to start / end of lines like in bash.
         {
-            "before": [
-                "<C-a>"
-            ],
             "after": [
                 "^"
+            ],
+            "before": [
+                "<C-a>"
             ]
         },
         {
-            "before": [
-                "<C-e>"
-            ],
             "after": [
                 "$"
+            ],
+            "before": [
+                "<C-e>"
             ]
         }
     ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        // Move to start / end of lines like in bash.
-        {
-            "before": [
-                "<C-a>"
-            ],
-            "after": [
-                "^"
-            ]
-        },
-        {
-            "before": [
-                "<C-e>"
-            ],
-            "after": [
-                "$"
-            ]
-        },
-        // " Re-highlight lines after shifting them.
-        {
-            "before": [
-                "<"
-            ],
-            "after": [
-                "<",
-                "g",
-                "v"
-            ]
-        },
-        {
-            "before": [
-                ">"
-            ],
-            "after": [
-                ">",
-                "g",
-                "v"
-            ]
-        }
-    ],
-    "vim.leader": ",",
     "vim.showcmd": true,
     "vim.showmodename": true,
     "vim.smartcase": true,
@@ -216,7 +196,48 @@
     // File location is configured by `vim.vimrc.path`, which includes $HOME/.vimrc, among
     // others.
     "vim.vimrc.enable": false,
+    "vim.visualModeKeyBindingsNonRecursive": [
+        // Move to start / end of lines like in bash.
+        {
+            "after": [
+                "^"
+            ],
+            "before": [
+                "<C-a>"
+            ]
+        },
+        {
+            "after": [
+                "$"
+            ],
+            "before": [
+                "<C-e>"
+            ]
+        },
+        // " Re-highlight lines after shifting them.
+        {
+            "after": [
+                "<",
+                "g",
+                "v"
+            ],
+            "before": [
+                "<"
+            ]
+        },
+        {
+            "after": [
+                ">",
+                "g",
+                "v"
+            ],
+            "before": [
+                ">"
+            ]
+        }
+    ],
     "vim.visualstar": true,
     "vim.whichwrap": "<,>,[,],h,l",
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Default Dark Modern"
 }
