@@ -19,8 +19,10 @@ set -x  # Print executed commands.
 if [[ "${OSTYPE:?}" == "darwin"* ]]; then
     # macOS.
     [ -f ${HOME}/Library/Application\ Support/Code/User/settings.json ] || ln -s ${PWD}/vscode/settings.json ${HOME}/Library/Application\ Support/Code/User/settings.json
+    [ -f ${HOME}/Library/Application\ Support/Code/User/keybindings.json ] || ln -s ${PWD}/vscode/keybindings.json ${HOME}/Library/Application\ Support/Code/User/keybindings.json
 else
     # Assume Linux otherwise.
     [ -d ${HOME}/.config/Code/User/ ] || mkdir -p ${HOME}/.config/Code/User
     [ -f ${HOME}/.config/Code/User/settings.json ] || ln -s ${PWD}/vscode/settings.json ${HOME}/.config/Code/User/settings.json
+    [ -f ${HOME}/.config/Code/User/keybindings.json ] || ln -s ${PWD}/vscode/keybindings.json ${HOME}/.config/Code/User/keybindings.json
 fi
