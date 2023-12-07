@@ -7,8 +7,8 @@
     "[go]": {
         // Golang specific settings: https://code.visualstudio.com/docs/languages/go.
         //
-        // vscode-go settings start with "go." and don't belong here.
-        // Docs: https://github.com/golang/vscode-go/blob/master/docs/settings.md.
+        // vscode-go settings start with "go." and don't belong in this section:
+        // https://github.com/golang/vscode-go/blob/master/docs/settings.md.
     },
     "[markdown]": {
         // Markdown specific settings: https://code.visualstudio.com/docs/languages/markdown
@@ -239,5 +239,6 @@
     "vim.visualstar": true,
     "vim.whichwrap": "<,>,[,],h,l",
     "window.zoomLevel": 1,
-    "workbench.colorTheme": "Default Dark Modern"
+    "workbench.colorTheme": "Default Dark Modern",
+    "git.enableSmartCommit": true
 }
