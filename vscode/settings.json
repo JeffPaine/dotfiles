@@ -35,16 +35,28 @@
     },
     "python.defaultInterpreterPath": "/usr/bin/python3",
     "telemetry.telemetryLevel": "off",
-    "terminal.integrated.defaultProfile.linux": "",
+    "terminal.integrated.commandsToSkipShell": [
+        // ctrl-p should work as normal in the terminal.
+        "-workbench.action.quickOpen",
+    ],
+    "terminal.integrated.defaultProfile.linux": "bash",
     "terminal.integrated.fontSize": 14,
     "vim.autoindent": true,
     "vim.cursorStylePerMode.insert": "line",
     "vim.cursorStylePerMode.normal": "block",
-    // Delegate configured keys to be handled by VS Code instead of by the VSCodeVim extension.
+    // Delegate configured keys to be handled by VSCode instead of by the VSCodeVim extension.
     // https://github.com/VSCodeVim/Vim#vscodevim-settings.
     "vim.handleKeys": {
-        // Ctrl-f should invoke the native VS Code find utility.
-        "<C-f>": false
+        // Find dialog.
+        "<C-f>": false,
+        // Find and replace dialog.
+        "<C-h>": false,
+        // Toggle the bottom panel.
+        "<C-j>": false,
+        // Toggle the left side panel.
+        "<C-b>": false,
+        // Close tab.
+        "<C-w>": false
     },
     "vim.history": 1000,
     "vim.hlsearch": true,
