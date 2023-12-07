@@ -16,3 +16,7 @@
 	c = commit
 [pager]
 	branch = false
+[pull]
+	# Only fast-forward merges (generally safe), or fail.
+	# https://stackoverflow.com/a/71774640.
+	ff = only
