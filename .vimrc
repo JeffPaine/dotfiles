@@ -1,7 +1,12 @@
-" ###########################################################################
-" .vimrc
-" Author: Jeffrey Paine
-" ###########################################################################
+" Installation:
+"
+" 1) Install Vundle (https://github.com/VundleVim/Vundle.vim).
+"     $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" 2) Install Vundle plugins.
+"     $ vim +PluginInstall +qall
+" 3) Configure YouCompleteMe (if used) https://github.com/ycm-core/YouCompleteMe.
+"     $ cd ~/.vim/bundle/YouCompleteMe && python3 install.py --go-completer
+"
 
 " Disables vi compatibility
 set nocompatible
@@ -17,7 +22,8 @@ filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'               " let Vundle manage Vundle, required
+" Plugins to install (by default `git clone`d to ~/.vim/bundle/).
+Plugin 'VundleVim/Vundle.vim'            " let Vundle manage Vundle, required
 Plugin 'vim-syntastic/syntastic'         " Syntax checking.
 Plugin 'Raimondi/delimitMate'            " Bracket (etc.) matching / closing.
 Plugin 'tpope/vim-surround'              " Easily add, subtract quotes / parentheses, etc
@@ -35,9 +41,6 @@ Plugin 'junegunn/fzf.vim'                " fzf integration, https://github.com/j
 if filereadable(expand('~/.at_work.vimrc'))
   source ~/.at_work.vimrc
 else
-  " After install, per https://github.com/ycm-core/YouCompleteMe#linux-64-bit:
-  " $ cd ~/.vim/bundle/YouCompleteMe
-  " $ python3 install.py --go-completer
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'google/vim-maktaba' " required by google/vim-codefmt.
   Plugin 'google/vim-codefmt'
