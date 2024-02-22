@@ -18,7 +18,7 @@
     "editor.fontFamily": "Hack, Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 14,
     "editor.formatOnSave": true,
-    "editor.lightbulb.enabled": false,
+    "editor.lightbulb.enabled": "off",
     "editor.minimap.enabled": false,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.occurrencesHighlight": "off",
