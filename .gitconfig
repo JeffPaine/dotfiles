@@ -48,3 +48,6 @@
 	# Three part diffs, instead of the default two part.
 	# https://jvns.ca/blog/2024/02/16/popular-git-config-options/#merge-conflictstyle-zdiff3.
 	conflictstyle = zdiff3
+[commit]
+	# Show the commit diff in the editor when writing the commit message.
+	verbose = true
