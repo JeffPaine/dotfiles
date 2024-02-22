@@ -17,6 +17,34 @@
 [pager]
 	branch = false
 [pull]
-	# Only fast-forward merges (generally safe), or fail.
-	# https://stackoverflow.com/a/71774640.
+	# Avoid creating a merge commit when running `git pull` on a branch
+	# where the upstream branch has diverged.
+	#
+	# `git pull` is basically a `git fetch` (retrieve commits from a remote
+	# repo) followed by merging those commits with the local tree.
+	#
+	# A fast-forward "merge" is if you had A -> B and the remote had A -> B
+	# -> C, then your local branch would be changed to point at C. A simple
+	# integration of histories.
+	#
+	# Here we try and do fast-forward merges only or stop if they can't and
+	# let the user decide. At this point the user could rebase their
+	# changes on top of those from the remote, creat a merge commit, or
+	# something else.
+	#
+	# More info: https://stackoverflow.com/a/71774640.
 	ff = only
+[init]
+	defaultBranch = main
+[branch]
+	# Make `git branch` sort by most recently used branches, instead of
+	# alphabetically.
+	sort = -committerdate
+[diff]
+	# Clearer diffs.
+	# https://jvns.ca/blog/2024/02/16/popular-git-config-options/#diff-algorithm-histogram.
+	algorithm = histogram
+[merge]
+	# Three part diffs, instead of the default two part.
+	# https://jvns.ca/blog/2024/02/16/popular-git-config-options/#merge-conflictstyle-zdiff3.
+	conflictstyle = zdiff3
