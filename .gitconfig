@@ -6,7 +6,10 @@
 [color]
 	ui = true
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+	# See `man git log` for formatting options.
+	# Note that the %d (ref names) placeholder has a leading space that
+	# apparently can't be removed: https://stackoverflow.com/q/71040611.
+	lg = log --graph --format='%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cs)%C(reset) %C(blue)<%an>%C(reset)'
 	s = status
 	st = status --short --branch --ignore-submodules=untracked
 	pom = push origin main
