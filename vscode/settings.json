@@ -204,7 +204,7 @@
     "vim.smartcase": true,
     "vim.surround": true,
     // Width to word-wrap to when using gq.
-    "vim.textwidth": 100,
+    "vim.textwidth": 80,
     "vim.useSystemClipboard": false,
     // .vimrc support only includes remaps: https://github.com/VSCodeVim/Vim#vimrc-support.
     // File location is configured by `vim.vimrc.path`, which includes $HOME/.vimrc, among
