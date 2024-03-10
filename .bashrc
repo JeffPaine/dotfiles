@@ -129,6 +129,11 @@ fi
 # http://golang.org/doc/code.html#GOPATH
 export GOPATH=$HOME/go
 
+# Add pip local (non-system-wide) installs.
+if [[ -d "$HOME/.local/bin" ]]; then
+	export PATH=$PATH:$HOME/.local/bin
+fi
+
 # Set our default EDITOR
 EDITOR='vim'
 
