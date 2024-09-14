@@ -1,10 +1,28 @@
-// Place your key bindings in this file to override the defaultsauto[]
+// Place your key bindings in this file to override the defaults
 [
+    // Configure j, k and up and down arrows to move line by line even when text is wrapped.
+    // From https://github.com/VSCodeVim/Vim/blob/master/README.md.
     {
-        "key": "ctrl+shift+v",
-        "command": "-markdown.showPreview",
-        "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+        "key": "up",
+        "command": "cursorUp",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
     },
+    {
+        "key": "down",
+        "command": "cursorDown",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+    },
+    {
+        "key": "k",
+        "command": "cursorUp",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode == 'Normal' && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+    },
+    {
+        "key": "j",
+        "command": "cursorDown",
+        "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode == 'Normal' && !suggestWidgetMultipleSuggestions && !suggestWidgetVisible"
+    },
+    // Make switching tabs like in a web browser.
     {
         "key": "ctrl+tab",
         "command": "workbench.action.nextEditor"
@@ -14,3 +32,4 @@
         "command": "workbench.action.previousEditor"
     }
 ]
+
