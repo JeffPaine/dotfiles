@@ -134,8 +134,11 @@ if [[ -d "$HOME/.local/bin" ]]; then
 	export PATH=$PATH:$HOME/.local/bin
 fi
 
-# Set our default EDITOR
+# Set a default EDITOR.
 EDITOR='vim'
+
+# Set a default SUDO_EDITOR.
+SUDO_EDITOR='vim'
 
 # So colors show up in output, e.g. ls
 CLICOLOR=1;
