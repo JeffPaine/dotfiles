@@ -256,6 +256,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         # Set Homebrew-related shell variables (PATH, etc.).
         eval "$(${HOMEBREW_PATH:?} shellenv)"
 
+        # Add gnubin to PATH to pick up GNU `tar`. See `brew info gnu-tar`.
+        PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+
         # Disable analytics: https://docs.brew.sh/Analytics#opting-out.
         export HOMEBREW_NO_ANALYTICS=1
 
