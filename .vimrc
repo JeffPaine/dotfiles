@@ -4,8 +4,6 @@
 "     $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " 2) Install Vundle plugins.
 "     $ vim +PluginInstall +qall
-" 3) Configure YouCompleteMe (if used) https://github.com/ycm-core/YouCompleteMe.
-"     $ cd ~/.vim/bundle/YouCompleteMe && python3 install.py --go-completer
 "
 
 " Disables vi compatibility
@@ -41,7 +39,6 @@ Plugin 'junegunn/fzf.vim'                " fzf integration, https://github.com/j
 if filereadable(expand('~/.at_work.vimrc'))
   source ~/.at_work.vimrc
 else
-  Plugin 'Valloric/YouCompleteMe'
   Plugin 'google/vim-maktaba' " required by google/vim-codefmt.
   Plugin 'google/vim-codefmt'
   Plugin 'google/vim-glaive'  " Used to configure codefmt's maktaba flags. See `:help :Glaive` for usage.
@@ -290,14 +287,6 @@ vnoremap <C-e> $
 " Plugin specific
 " ###########################################################################
 
-" https://github.com/ycm-core/YouCompleteMe.
-"
-" Auto-close function signature pane after insertion.
-let g:ycm_autoclose_preview_window_after_insertion=1
-" Disable automatic pop-ups on hover:
-" https://github.com/ycm-core/YouCompleteMe#the-gycm_auto_hover-option
-let g:ycm_auto_hover=''
-
 " https://github.com/vim-syntastic/syntastic
 "
 " Since we use https://github.com/vim-airline/vim-airline, per :h
@@ -310,11 +299,10 @@ let g:ycm_auto_hover=''
 " ignored).'
 "
 " * python: passive because it's slow
-" * c, cpp: passive because YouCompleteMe does it's own checking, :h syntastic-ycm
 let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "active_filetypes": [],
-    \ "passive_filetypes": ["python", "c", "cpp"] }
+    \ "passive_filetypes": ["python"] }
 " You can tell syntastic which checkers to run for a given filetype by setting
 " a variable 'g:syntastic_<filetype>_checkers' to a list of checkers. More
 " info: :h syntastic-filetype-checkers
