@@ -260,5 +260,8 @@
     "vim.whichwrap": "<,>,[,],h,l",
     "window.zoomLevel": 1,
     "workbench.colorTheme": "Default Dark Modern",
-    "git.enableSmartCommit": true
+    "git.enableSmartCommit": true,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    // Disable sticky scroll as it breaks VSCodeVim zt, zb: https://github.com/VSCodeVim/Vim/issues/9141.
+    "editor.stickyScroll.enabled": false,
 }
