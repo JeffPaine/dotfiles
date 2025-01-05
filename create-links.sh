@@ -49,4 +49,12 @@ else
 
     ln -s "${HOME}/.dotfiles/vscode/settings.json" "${HOME}/.config/Code/User/settings.json"
     ln -s "${HOME}/.dotfiles/vscode/keybindings.json" "${HOME}/.config/Code/User/keybindings.json"
+
+    # GNOME Terminal, which does not have a config file.
+    # https://askubuntu.com/a/1241849.
+    #
+    # To generate the file:
+    #     $ dconf dump /org/gnome/terminal/ > gnome-terminal.txt
+    # To load the config:
+    cat "${HOME}/.dotfiles/gnome-terminal.txt" | dconf load /org/gnome/terminal/legacy/profiles:/
 fi
