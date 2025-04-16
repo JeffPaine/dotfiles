@@ -20,6 +20,8 @@
         ]
     },
     "debug.console.fontSize": 14,
+    "diffEditor.experimental.showMoves": true,
+    "diffEditor.renderSideBySide": true,
     "editor.cursorStyle": "block",
     "editor.fontFamily": "Hack, Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 14,
@@ -29,9 +31,13 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.occurrencesHighlight": "off",
     "editor.renderWhitespace": "all",
+    // Disable sticky scroll as it breaks VSCodeVim zt, zb: https://github.com/VSCodeVim/Vim/issues/9141.
+    "editor.stickyScroll.enabled": false,
+    "editor.unicodeHighlight.nonBasicASCII": false,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "git.confirmSync": false,
+    "git.enableSmartCommit": true,
     // Don't show test coverage when the "Go: Test Package" command is run.
     "go.coverOnTestPackage": false,
     "go.toolsManagement.autoUpdate": true,
@@ -47,6 +53,7 @@
     ],
     "terminal.integrated.defaultProfile.linux": "bash",
     "terminal.integrated.fontSize": 14,
+    "update.showReleaseNotes": false,
     "vim.autoindent": true,
     "vim.cursorStylePerMode.insert": "line",
     "vim.cursorStylePerMode.normal": "block",
@@ -259,9 +266,5 @@
     "vim.visualstar": true,
     "vim.whichwrap": "<,>,[,],h,l",
     "window.zoomLevel": 1,
-    "workbench.colorTheme": "Default Dark Modern",
-    "git.enableSmartCommit": true,
-    "editor.unicodeHighlight.nonBasicASCII": false,
-    // Disable sticky scroll as it breaks VSCodeVim zt, zb: https://github.com/VSCodeVim/Vim/issues/9141.
-    "editor.stickyScroll.enabled": false,
+    "workbench.colorTheme": "Default Dark Modern"
 }
