@@ -1,3 +1,9 @@
+# Git configuration.
+#
+# Useful suggestions:
+#  * https://jvns.ca/blog/2024/02/16/popular-git-config-options/
+#  * https://blog.gitbutler.com/how-git-core-devs-configure-git/
+
 [user]
 	name = Jeffrey Paine
 	email = jeff@jeffpaine.com
@@ -47,6 +53,8 @@
 	# Clearer diffs.
 	# https://jvns.ca/blog/2024/02/16/popular-git-config-options/#diff-algorithm-histogram.
 	algorithm = histogram
+	# Color moved lines in diff output.
+	colorMoved = plain
 [merge]
 	# Three part diffs, instead of the default two part.
 	# https://jvns.ca/blog/2024/02/16/popular-git-config-options/#merge-conflictstyle-zdiff3.
@@ -54,3 +62,9 @@
 [commit]
 	# Show the commit diff in the editor when writing the commit message.
 	verbose = true
+[column]
+	# List branch names in columns, so more are visible per screen.
+	ui = auto
+[tag]
+	# Treat dotted version numbers as a series of integer values for sorting purposes.
+	sort = version:refname
