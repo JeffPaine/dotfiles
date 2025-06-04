@@ -173,8 +173,14 @@ export FZF_CTRL_T_COMMAND='find . -type f -not -path "*/\.git/*" -printf "%P\n"'
 #  <CTRL-r> - Paste the selected command from history into the command line
 #  <ALT-c> - cd into the select directory
 #
-if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
-	source /usr/share/doc/fzf/examples/key-bindings.bash
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	if [ -f /opt/homebrew/opt/fzf/shell/key-bindings.bash ]; then
+		source /opt/homebrew/opt/fzf/shell/key-bindings.bash
+	fi
+else
+	if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
+		source /usr/share/doc/fzf/examples/key-bindings.bash
+	fi
 fi
 # Enable fuzzy auto-completion (per /usr/share/doc/fzf/examples/key-bindings.bash).
 #
@@ -187,8 +193,14 @@ fi
 #
 # To change the trigger sequence from ** to something else:
 #  export FZF_COMPLETION_TRIGGER='~~'
-if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
-	source /usr/share/doc/fzf/examples/completion.bash
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	if [ -f /opt/homebrew/opt/fzf/shell/completion.bash ]; then
+		source /opt/homebrew/opt/fzf/shell/completion.bash
+	fi
+else
+	if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
+		source /usr/share/doc/fzf/examples/completion.bash
+	fi
 fi
 
 #################################################################################
