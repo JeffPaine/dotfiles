@@ -179,8 +179,10 @@ set t_Co=256
 set timeoutlen=1000
 set ttimeoutlen=10
 
-" Custom colorscheme.
-colorscheme molokai
+" Enalbe a custom colorscheme, if it's installed.
+if !empty(globpath(&runtimepath, 'colors/molokai.vim'))
+  colorscheme molokai
+endif
 
 " Set background to be completely black (not just mostly-black as molokai sets it).
 "
