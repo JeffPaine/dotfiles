@@ -259,6 +259,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Silence the idiotic bash warning message: https://apple.stackexchange.com/a/371998.
     export BASH_SILENCE_DEPRECATION_WARNING=1
 
+    # Explicitly set locale settings so bash on MacOS works as expected.
+    export LANG="en_US.UTF-8"
+    export LC_ALL="en_US.UTF-8"
+
     # Homebrew: https://brew.sh/.
     # Install locations:
     #   Apple silicon (e.g. M1, etc.): /opt/homebrew
