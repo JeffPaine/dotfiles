@@ -33,13 +33,13 @@ ln -s ${HOME}/.dotfiles/.vimrc ${HOME}/.vimrc
 #
 # macOS.
 if [[ "${OSTYPE:?}" == "darwin"* ]]; then
-    rm -f "${HOME}/Library/Application\ Support/Code/User/settings.json"
-    rm -f "${HOME}/Library/Application\ Support/Code/User/keybindings.json"
+    rm -f "${HOME}/Library/Application Support/Code/User/settings.json"
+    rm -f "${HOME}/Library/Application Support/Code/User/keybindings.json"
 
-    mkdir -p "${HOME}/Library/Application\ Support/Code/User/"
+    mkdir -p "${HOME}/Library/Application Support/Code/User/"
 
-    ln -s "${HOME}/.dotfiles/vscode/settings.json" "${HOME}/Library/Application\ Support/Code/User/settings.json"
-    ln -s "${HOME}/.dotfiles/vscode/keybindings.json" "${HOME}/Library/Application\ Support/Code/User/keybindings.json"
+    ln -s "${HOME}/.dotfiles/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
+    ln -s "${HOME}/.dotfiles/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
 # Linux.
 else
     rm -f "${HOME}/.config/Code/User/settings.json"
