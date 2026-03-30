@@ -6,7 +6,7 @@ My personal dotfiles.
 
 ```bash
 $ mkdir -p ~/.dotfiles
-$ git clone https://github.com/JeffPaine/dotfiles.git ~/.dotfiles/personal
+$ git clone git@github.com:JeffPaine/dotfiles.git ~/.dotfiles/personal
 $ ~/.dotfiles/personal/install.sh
 ```
 
