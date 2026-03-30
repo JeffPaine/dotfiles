@@ -6,7 +6,7 @@ set -euo pipefail
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Standard stowable packages.
-PACKAGES="bash conky git readline tmux vim"
+PACKAGES="bash conky git jj readline tmux vim"
 
 echo "Stowing packages: $PACKAGES"
 # --restow: Prune existing symlinks before stowing again (useful for updates).
