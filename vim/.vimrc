@@ -84,18 +84,6 @@ set whichwrap+=<,>,[,],h,l
 " Show line numbers
 set number
 
-" " Insert mode: show absolute line numbers.
-" " Normal mode (and unfocused buffers): show relative line numbers.
-" " From https://jeffkreeftmeijer.com/vim-number/.
-" augroup numbertoggle
-"   autocmd!
-"   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
-"   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
-" augroup END
-
-" Highlight the current line.
-set cursorline
-
 " Set no line length by default
 set textwidth=0
 
@@ -184,16 +172,20 @@ if !empty(globpath(&runtimepath, 'colors/molokai.vim'))
   colorscheme molokai
 endif
 
-" Set background to be completely black (not just mostly-black as molokai sets it).
+" Set custom background color.
 "
 " Plugins are loaded after .vimrc is processed, which means the settings from
 " ~/.vim/bundle/molokai/colors/molokai.vim override the custom color settings (highlight...) from
 " .vimrc. So, we either have to add this override to ~/.vim/after/plugin/molokai/molokai.vim (which
 " is annoying to maintain), or add it as a augroup.
 augroup CustomColors
+  " Set background to be completely transparent so it inherits the tmux or
+  " terminal background color. Molokai otherwise sets it to a light grey.
   autocmd!
-  autocmd ColorScheme molokai highlight Normal ctermbg=Black
-  autocmd ColorScheme molokai highlight nonText ctermbg=Black
+  autocmd ColorScheme molokai highlight Normal ctermbg=None guibg=None
+  autocmd ColorScheme molokai highlight nonText ctermbg=None guibg=None
+  " Make the line number gutter transparent, too.
+  autocmd ColorScheme molokai highlight LineNr ctermbg=None guibg=None
 augroup END
 
 " Don't highlight matching parenthesis, braces, etc. (makes it hard to tell
