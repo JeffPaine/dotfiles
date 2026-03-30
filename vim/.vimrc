@@ -36,8 +36,8 @@ Plugin 'junegunn/fzf'                    " fzf base vim plugin (required by fzf.
 Plugin 'junegunn/fzf.vim'                " fzf integration, https://github.com/junegunn/fzf.vim
 
 " Some work-only settings.
-if filereadable(expand('~/.at_work.vimrc'))
-  source ~/.at_work.vimrc
+if filereadable(expand('~/.dotfiles/work/vim/.vimrc'))
+  source ~/.dotfiles/work/vim/.vimrc
 else
   Plugin 'google/vim-maktaba' " required by google/vim-codefmt.
   Plugin 'google/vim-codefmt'
@@ -352,7 +352,7 @@ let delimitMate_expand_cr=1
 
 " https://github.com/google/vim-codefmt
 "
-if !filereadable(expand('~/.at_work.vimrc'))
+if !filereadable(expand('~/.dotfiles/work/vim/.vimrc'))
   augroup autoformat_settings
     " If there's already an augroup of the same name, delete it. Otherwise, it
     " will be run more than once.
