@@ -1,6 +1,12 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# ~/.bashrc: executed by bash(1) for *non-login* shells.
+#
+# NOTE:
+#   * ~/.profile: should only contain baseline settings such as PATH, EDITOR, etc.
+#   that should be set up as part of initial login / session start and are
+#   relevant to all child processes (e.g. scripts, interactive shells, etc.).
+#   * ~/.bashrc: should only contain settings relevant to interactive bash
+#   shells (e.g. someone typing at the command line, so prompt customizations,
+#   bash customizations, aliases, etc.).
 
 # If not running interactively, don't do anything
 case $- in
@@ -108,40 +114,6 @@ fi
 #################################################################################
 # Personal customizations
 #################################################################################
-
-# Add $HOME/bin/ to our $PATH.
-if [[ -d "$HOME/bin" ]]; then
-	export PATH=$PATH:$HOME/bin
-fi
-
-# Add $HOME/go/bin/ to our $PATH.
-if [[ -d "$HOME/go/bin" ]]; then
-	export PATH=$PATH:$HOME/go/bin
-fi
-
-# Add the golang install location to our $PATH.
-# https://golang.org/doc/install
-if [[ -d "/usr/local/go/bin" ]]; then
-	export PATH=$PATH:/usr/local/go/bin
-fi
-
-# Set $GOPATH.
-# http://golang.org/doc/code.html#GOPATH
-export GOPATH=$HOME/go
-
-# Add pip local (non-system-wide) installs.
-if [[ -d "$HOME/.local/bin" ]]; then
-	export PATH=$PATH:$HOME/.local/bin
-fi
-
-# Set a default EDITOR.
-EDITOR='vim'
-
-# Set a default SUDO_EDITOR.
-SUDO_EDITOR='vim'
-
-# So colors show up in output, e.g. ls
-CLICOLOR=1;
 
 # Longer HISTORY
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
@@ -253,37 +225,6 @@ prompt
 # Miscellaneous
 #################################################################################
 
-# macOS only.
-# https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#index-OSTYPE.
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    # Silence the idiotic bash warning message: https://apple.stackexchange.com/a/371998.
-    export BASH_SILENCE_DEPRECATION_WARNING=1
-
-    # Explicitly set locale settings so bash on MacOS works as expected.
-    export LANG="en_US.UTF-8"
-    export LC_ALL="en_US.UTF-8"
-
-    # Homebrew: https://brew.sh/.
-    # Install locations:
-    #   Apple silicon (e.g. M1, etc.): /opt/homebrew
-    #   Intel silicon: /usr/local
-    HOMEBREW_PATH='/opt/homebrew/bin/brew'
-    if [[ -x "${HOMEBREW_PATH:?}" ]]; then
-        # Set Homebrew-related shell variables (PATH, etc.).
-        eval "$(${HOMEBREW_PATH:?} shellenv)"
-
-        # Add gnubin to PATH to pick up GNU `tar`. See `brew info gnu-tar`.
-        PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
-
-        # Disable analytics: https://docs.brew.sh/Analytics#opting-out.
-        export HOMEBREW_NO_ANALYTICS=1
-
-        # Enable bash-completion, https://formulae.brew.sh/formula/bash-completion.
-        if [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]]; then
-            . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
-        fi
-    fi
-fi
 
 alias ls='ls --color=auto'
 
