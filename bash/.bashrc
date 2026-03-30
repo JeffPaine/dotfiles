@@ -225,9 +225,6 @@ prompt
 # Miscellaneous
 #################################################################################
 
-
-alias ls='ls --color=auto'
-
 # less: Nice colors for man pages / less: https://stackoverflow.com/a/22202558
 export LESS_TERMCAP_mb=$'\E[01;31m'                # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'           # begin bold
