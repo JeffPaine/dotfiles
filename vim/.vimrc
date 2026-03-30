@@ -182,10 +182,10 @@ augroup CustomColors
   " Set background to be completely transparent so it inherits the tmux or
   " terminal background color. Molokai otherwise sets it to a light grey.
   autocmd!
-  autocmd ColorScheme molokai highlight Normal ctermbg=None guibg=None
-  autocmd ColorScheme molokai highlight nonText ctermbg=None guibg=None
+  autocmd ColorScheme molokai highlight Normal ctermbg=NONE guibg=NONE
+  autocmd ColorScheme molokai highlight nonText ctermbg=NONE guibg=NONE
   " Make the line number gutter transparent, too.
-  autocmd ColorScheme molokai highlight LineNr ctermbg=None guibg=None
+  autocmd ColorScheme molokai highlight LineNr ctermbg=NONE guibg=NONE
 augroup END
 
 " Don't highlight matching parenthesis, braces, etc. (makes it hard to tell
