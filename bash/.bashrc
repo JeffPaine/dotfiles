@@ -79,6 +79,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
+alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -123,6 +124,10 @@ HISTFILESIZE=20000
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
+
+# Write to history as soon as the next prompt appears. So we don't lose history
+# if, for example, a session is killed.
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -225,6 +230,9 @@ prompt
 # Miscellaneous
 #################################################################################
 
+# Don't override TERM, let the terminal emulator set it. Usually this is
+# "xterm-256color" or "screen-256color". Noting this here for grep-ability.
+
 # less: Nice colors for man pages / less: https://stackoverflow.com/a/22202558
 export LESS_TERMCAP_mb=$'\E[01;31m'                # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'           # begin bold
@@ -241,3 +249,8 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m'          # begin underline
 # R: allow ANSI escape sequences to pass through unscathed (e.g. from git
 # diffs). https://stackoverflow.com/a/20414664
 export LESS='R-j.5'
+
+# Include work .bashrc, if it exists.
+if [ -f "$HOME/.dotfiles/work/bash/.bashrc" ]; then
+	. "$HOME/.dotfiles/work/bash/.bashrc"
+fi

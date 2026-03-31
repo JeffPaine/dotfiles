@@ -77,6 +77,11 @@ if [ "$(uname -s)" = "Darwin" ]; then
 	fi
 fi
 
+# Include work .profile, if it exists.
+if [ -f "$HOME/.dotfiles/work/profile/.profile" ]; then
+	. "$HOME/.dotfiles/work/profile/.profile"
+fi
+
 # Check if the current shell is bash
 if [ -n "$BASH_VERSION" ]; then
 	# Check if .bashrc exists, and if so, source it
