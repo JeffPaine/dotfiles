@@ -266,7 +266,7 @@
     "vim.visualstar": true,
     "vim.whichwrap": "<,>,[,],h,l",
     "window.zoomLevel": 1,
-    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.colorTheme": "Dark Modern",
     "[dockercompose]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 2,
