@@ -68,3 +68,7 @@
 [tag]
 	# Treat dotted version numbers as a series of integer values for sorting purposes.
 	sort = version:refname
+
+# Include work-specific overrides, if present.
+[include]
+	path = ~/.dotfiles/work/git/.gitconfig
