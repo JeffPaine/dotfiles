@@ -2,3 +2,7 @@
 
 [ui]
 default-command = "log"
+
+[user]
+name = "Jeffrey Paine"
+email = "jeff@jeffpaine.com"
