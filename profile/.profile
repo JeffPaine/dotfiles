@@ -35,6 +35,11 @@ if [ -d "$HOME/.local/bin" ]; then
 	export PATH="$PATH:$HOME/.local/bin"
 fi
 
+# Rust cargo: add the path that `cargo install ...` puts binaries in to.
+if [ -d "$HOME/.cargo/bin" ]; then
+	export PATH="$PATH:$HOME/.cargo/bin"
+fi
+
 # Set a default EDITOR.
 export EDITOR='vim'
 
@@ -66,6 +71,26 @@ if [ "$(uname -s)" = "Darwin" ]; then
 
 		# Add gnubin to PATH to pick up GNU `tar`. See `brew info gnu-tar`.
 		export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+
+		# Rust.
+		#
+		# rustup is the recommended way to install rust. rustup
+		# provides standard rust binaries (rustc, cargo, etc.) that act
+		# as proxies to the actual version-specific binaries. This
+		# allows you to support multiple rust toolchains on a single
+		# host transparently (you call `cargo` and rustup figures out
+		# the required rust version for the project, etc. and Just
+		# Works).
+		#
+		# Just `brew install rust` would only install a single version
+		# of the various binaries. Since the rust and rustup homebrew
+		# packages would install conflicting named binaries, the
+		# homebrew rustup package owners have decided not to do
+		# symlinking into homebrew's bin/ by default, so we have to do
+		# it here.
+		if [ -d "/opt/homebrew/opt/rustup/bin" ]; then
+			export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+		fi
 
 		# Disable analytics: https://docs.brew.sh/Analytics#opting-out.
 		export HOMEBREW_NO_ANALYTICS=1
